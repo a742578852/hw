@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.QuestionMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.Question">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="KMMC" jdbcType="VARCHAR" property="kmmc" />
+    <result column="ZJMC" jdbcType="VARCHAR" property="zjmc" />
+    <result column="TX" jdbcType="VARCHAR" property="tx" />
+    <result column="NYD" jdbcType="VARCHAR" property="nyd" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="SELA" jdbcType="VARCHAR" property="sela" />
+    <result column="SELB" jdbcType="VARCHAR" property="selb" />
+    <result column="SELC" jdbcType="VARCHAR" property="selc" />
+    <result column="SELD" jdbcType="VARCHAR" property="seld" />
+    <result column="ANSWER" jdbcType="VARCHAR" property="answer" />
+    <result column="CTR" jdbcType="VARCHAR" property="ctr" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, KMMC, ZJMC, TX, NYD, CONTENT, SELA, SELB, SELC, SELD, ANSWER, CTR, created_at, 
+    updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryQuestionByKmmc" resultType="java.lang.Integer">
+    select count(1) from question
+    where KMMC = #{subject}
+  </select>
+  <select id="queryQuestionByKm" resultType="com.information.five.model.Question">
+    select <include refid="Base_Column_List"/> from question
+    where KMMC = #{kmmc}
+  </select>
+  <select id="queryQusetinById" resultType="com.information.five.model.Question">
+    select <include refid="Base_Column_List"/> from question
+    where id in 
+    <foreach collection="array" item="item" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from question
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.Question" useGeneratedKeys="true">
+    insert into question (KMMC, ZJMC, TX, 
+      NYD, CONTENT, SELA, 
+      SELB, SELC, SELD, ANSWER, 
+      CTR, created_at, updated_at
+      )
+    values (#{kmmc,jdbcType=VARCHAR}, #{zjmc,jdbcType=VARCHAR}, #{tx,jdbcType=VARCHAR}, 
+      #{nyd,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{sela,jdbcType=VARCHAR}, 
+      #{selb,jdbcType=VARCHAR}, #{selc,jdbcType=VARCHAR}, #{seld,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      #{ctr,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.Question" useGeneratedKeys="true">
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="kmmc != null">
+        KMMC,
+      </if>
+      <if test="zjmc != null">
+        ZJMC,
+      </if>
+      <if test="tx != null">
+        TX,
+      </if>
+      <if test="nyd != null">
+        NYD,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="sela != null">
+        SELA,
+      </if>
+      <if test="selb != null">
+        SELB,
+      </if>
+      <if test="selc != null">
+        SELC,
+      </if>
+      <if test="seld != null">
+        SELD,
+      </if>
+      <if test="answer != null">
+        ANSWER,
+      </if>
+      <if test="ctr != null">
+        CTR,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="kmmc != null">
+        #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zjmc != null">
+        #{zjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="tx != null">
+        #{tx,jdbcType=VARCHAR},
+      </if>
+      <if test="nyd != null">
+        #{nyd,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sela != null">
+        #{sela,jdbcType=VARCHAR},
+      </if>
+      <if test="selb != null">
+        #{selb,jdbcType=VARCHAR},
+      </if>
+      <if test="selc != null">
+        #{selc,jdbcType=VARCHAR},
+      </if>
+      <if test="seld != null">
+        #{seld,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="ctr != null">
+        #{ctr,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.Question">
+    update question
+    <set>
+      <if test="kmmc != null">
+        KMMC = #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zjmc != null">
+        ZJMC = #{zjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="tx != null">
+        TX = #{tx,jdbcType=VARCHAR},
+      </if>
+      <if test="nyd != null">
+        NYD = #{nyd,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sela != null">
+        SELA = #{sela,jdbcType=VARCHAR},
+      </if>
+      <if test="selb != null">
+        SELB = #{selb,jdbcType=VARCHAR},
+      </if>
+      <if test="selc != null">
+        SELC = #{selc,jdbcType=VARCHAR},
+      </if>
+      <if test="seld != null">
+        SELD = #{seld,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        ANSWER = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="ctr != null">
+        CTR = #{ctr,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.Question">
+    update question
+    set KMMC = #{kmmc,jdbcType=VARCHAR},
+      ZJMC = #{zjmc,jdbcType=VARCHAR},
+      TX = #{tx,jdbcType=VARCHAR},
+      NYD = #{nyd,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      SELA = #{sela,jdbcType=VARCHAR},
+      SELB = #{selb,jdbcType=VARCHAR},
+      SELC = #{selc,jdbcType=VARCHAR},
+      SELD = #{seld,jdbcType=VARCHAR},
+      ANSWER = #{answer,jdbcType=VARCHAR},
+      CTR = #{ctr,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,54 @@
+2020-12-23 23:03:28.160 INFO [main]com.information.five.FiveApplicationTests.logStarting:55 -Starting FiveApplicationTests using Java 1.8.0_181 on QAQ-TTT with PID 21244 (started by ZZT in E:\IDEAproject\five)
+2020-12-23 23:03:28.165 INFO [main]com.information.five.FiveApplicationTests.logStartupProfileInfo:660 -No active profile set, falling back to default profiles: default
+2020-12-23 23:03:29.882 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -hm - Starting...
+2020-12-23 23:03:30.408 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -hm - Start completed.
+2020-12-23 23:03:30.410 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -test1 - Starting...
+2020-12-23 23:03:30.418 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -test1 - Start completed.
+2020-12-23 23:03:30.423 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [hm] success
+2020-12-23 23:03:30.423 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [test1] success
+2020-12-23 23:03:30.423 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet:237 -dynamic-datasource initial loaded [2] datasource,primary datasource named [hm]
+2020-12-23 23:03:31.489 INFO [main]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:181 -Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:03:32.912 INFO [main]com.information.five.FiveApplicationTests.logStarted:61 -Started FiveApplicationTests in 5.445 seconds (JVM running for 6.942)
+2020-12-23 23:03:33.500 INFO [SpringContextShutdownHook]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.shutdown:218 -Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:03:33.504 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:217 -dynamic-datasource start closing ....
+2020-12-23 23:03:33.505 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -hm - Shutdown initiated...
+2020-12-23 23:03:33.520 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -hm - Shutdown completed.
+2020-12-23 23:03:33.520 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -test1 - Shutdown initiated...
+2020-12-23 23:03:33.542 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -test1 - Shutdown completed.
+2020-12-23 23:03:33.542 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:221 -dynamic-datasource all closed success,bye
+2020-12-23 23:06:00.675 INFO [main]com.information.five.FiveApplicationTests.logStarting:55 -Starting FiveApplicationTests using Java 1.8.0_181 on QAQ-TTT with PID 23492 (started by ZZT in E:\IDEAproject\five)
+2020-12-23 23:06:00.682 INFO [main]com.information.five.FiveApplicationTests.logStartupProfileInfo:660 -No active profile set, falling back to default profiles: default
+2020-12-23 23:06:02.396 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -hm - Starting...
+2020-12-23 23:06:02.912 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -hm - Start completed.
+2020-12-23 23:06:02.914 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -test1 - Starting...
+2020-12-23 23:06:02.921 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -test1 - Start completed.
+2020-12-23 23:06:02.922 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [hm] success
+2020-12-23 23:06:02.922 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [test1] success
+2020-12-23 23:06:02.922 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet:237 -dynamic-datasource initial loaded [2] datasource,primary datasource named [hm]
+2020-12-23 23:06:03.915 INFO [main]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:181 -Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:06:05.284 INFO [main]com.information.five.FiveApplicationTests.logStarted:61 -Started FiveApplicationTests in 5.441 seconds (JVM running for 6.915)
+2020-12-23 23:06:06.716 INFO [SpringContextShutdownHook]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.shutdown:218 -Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:06:06.718 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:217 -dynamic-datasource start closing ....
+2020-12-23 23:06:06.718 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -hm - Shutdown initiated...
+2020-12-23 23:06:06.733 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -hm - Shutdown completed.
+2020-12-23 23:06:06.733 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -test1 - Shutdown initiated...
+2020-12-23 23:06:06.739 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -test1 - Shutdown completed.
+2020-12-23 23:06:06.740 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:221 -dynamic-datasource all closed success,bye
+2020-12-23 23:06:38.222 INFO [main]com.information.five.FiveApplicationTests.logStarting:55 -Starting FiveApplicationTests using Java 1.8.0_181 on QAQ-TTT with PID 22036 (started by ZZT in E:\IDEAproject\five)
+2020-12-23 23:06:38.228 INFO [main]com.information.five.FiveApplicationTests.logStartupProfileInfo:660 -No active profile set, falling back to default profiles: default
+2020-12-23 23:06:40.012 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -hm - Starting...
+2020-12-23 23:06:40.598 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -hm - Start completed.
+2020-12-23 23:06:40.599 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -test1 - Starting...
+2020-12-23 23:06:40.606 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -test1 - Start completed.
+2020-12-23 23:06:40.607 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [hm] success
+2020-12-23 23:06:40.607 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [test1] success
+2020-12-23 23:06:40.607 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet:237 -dynamic-datasource initial loaded [2] datasource,primary datasource named [hm]
+2020-12-23 23:06:41.585 INFO [main]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:181 -Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:06:42.857 INFO [main]com.information.five.FiveApplicationTests.logStarted:61 -Started FiveApplicationTests in 5.354 seconds (JVM running for 6.865)
+2020-12-23 23:06:44.428 INFO [SpringContextShutdownHook]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.shutdown:218 -Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-23 23:06:44.430 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:217 -dynamic-datasource start closing ....
+2020-12-23 23:06:44.430 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -hm - Shutdown initiated...
+2020-12-23 23:06:44.447 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -hm - Shutdown completed.
+2020-12-23 23:06:44.448 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:350 -test1 - Shutdown initiated...
+2020-12-23 23:06:44.454 INFO [SpringContextShutdownHook]com.zaxxer.hikari.HikariDataSource.close:352 -test1 - Shutdown completed.
+2020-12-23 23:06:44.455 INFO [SpringContextShutdownHook]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.destroy:221 -dynamic-datasource all closed success,bye

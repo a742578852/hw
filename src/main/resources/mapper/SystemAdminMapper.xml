@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.SystemAdminMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.SystemAdmin">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ryid" jdbcType="INTEGER" property="ryid" />
+    <result column="username" jdbcType="CHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick" jdbcType="VARCHAR" property="nick" />
+    <result column="session_token" jdbcType="VARCHAR" property="sessionToken" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="isSuper" jdbcType="BOOLEAN" property="issuper" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="api_token" jdbcType="VARCHAR" property="apiToken" />
+    <result column="hits" jdbcType="INTEGER" property="hits" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ryid, username, `password`, nick, session_token, `status`, isSuper, last_login_ip, 
+    last_login_time, api_token, hits, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_admin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="querySystemByUsername" resultType="com.information.five.model.SystemAdmin">
+    select <include refid="Base_Column_List"/> from system_admin
+    where username = #{username}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from system_admin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemAdmin" useGeneratedKeys="true">
+    insert into system_admin (ryid, username, `password`, 
+      nick, session_token, `status`, 
+      isSuper, last_login_ip, last_login_time, 
+      api_token, hits, created_at, 
+      updated_at)
+    values (#{ryid,jdbcType=INTEGER}, #{username,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nick,jdbcType=VARCHAR}, #{sessionToken,jdbcType=VARCHAR}, #{status,jdbcType=BOOLEAN}, 
+      #{issuper,jdbcType=BOOLEAN}, #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{apiToken,jdbcType=VARCHAR}, #{hits,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemAdmin" useGeneratedKeys="true">
+    insert into system_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ryid != null">
+        ryid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="nick != null">
+        nick,
+      </if>
+      <if test="sessionToken != null">
+        session_token,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="issuper != null">
+        isSuper,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="apiToken != null">
+        api_token,
+      </if>
+      <if test="hits != null">
+        hits,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ryid != null">
+        #{ryid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null">
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionToken != null">
+        #{sessionToken,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="issuper != null">
+        #{issuper,jdbcType=BOOLEAN},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apiToken != null">
+        #{apiToken,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null">
+        #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.SystemAdmin">
+    update system_admin
+    <set>
+      <if test="ryid != null">
+        ryid = #{ryid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null">
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionToken != null">
+        session_token = #{sessionToken,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="issuper != null">
+        isSuper = #{issuper,jdbcType=BOOLEAN},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apiToken != null">
+        api_token = #{apiToken,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null">
+        hits = #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.SystemAdmin">
+    update system_admin
+    set ryid = #{ryid,jdbcType=INTEGER},
+      username = #{username,jdbcType=CHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      nick = #{nick,jdbcType=VARCHAR},
+      session_token = #{sessionToken,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BOOLEAN},
+      isSuper = #{issuper,jdbcType=BOOLEAN},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      api_token = #{apiToken,jdbcType=VARCHAR},
+      hits = #{hits,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

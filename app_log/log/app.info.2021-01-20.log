@@ -1,0 +1,31 @@
+2021-01-20 20:36:49.683 INFO [main]com.information.five.FiveApplication.logStarting:55 -Starting FiveApplication using Java 1.8.0_181 on QAQ-TTT with PID 9796 (E:\IDEAproject\five\target\classes started by ZZT in E:\IDEAproject\five)
+2021-01-20 20:36:49.703 INFO [main]com.information.five.FiveApplication.logStartupProfileInfo:660 -No active profile set, falling back to default profiles: default
+2021-01-20 20:36:52.399 INFO [main]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:350 -Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-20 20:36:52.401 INFO [main]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:350 -Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$d654e2e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-20 20:36:52.409 INFO [main]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:350 -Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-20 20:36:53.177 INFO [main]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:108 -Tomcat initialized with port(s): 8081 (http)
+2021-01-20 20:36:53.208 INFO [main]org.apache.coyote.http11.Http11NioProtocol.log:173 -Initializing ProtocolHandler ["http-nio-8081"]
+2021-01-20 20:36:53.208 INFO [main]org.apache.catalina.core.StandardService.log:173 -Starting service [Tomcat]
+2021-01-20 20:36:53.209 INFO [main]org.apache.catalina.core.StandardEngine.log:173 -Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-20 20:36:53.210 INFO [main]org.apache.catalina.core.AprLifecycleListener.log:173 -An older version [1.2.17] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2021-01-20 20:36:53.210 INFO [main]org.apache.catalina.core.AprLifecycleListener.log:173 -Loaded Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2021-01-20 20:36:53.210 INFO [main]org.apache.catalina.core.AprLifecycleListener.log:173 -APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-01-20 20:36:53.210 INFO [main]org.apache.catalina.core.AprLifecycleListener.log:173 -APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-01-20 20:36:54.345 INFO [main]org.apache.catalina.core.AprLifecycleListener.log:173 -OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2021-01-20 20:36:54.518 INFO [main]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:173 -Initializing Spring embedded WebApplicationContext
+2021-01-20 20:36:54.518 INFO [main]o.s.b.w.s.context.ServletWebServerApplicationContext.prepareWebApplicationContext:289 -Root WebApplicationContext: initialization completed in 4723 ms
+2021-01-20 20:36:55.007 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -hm - Starting...
+2021-01-20 20:36:55.887 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -hm - Start completed.
+2021-01-20 20:36:55.888 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:80 -test1 - Starting...
+2021-01-20 20:36:55.895 INFO [main]com.zaxxer.hikari.HikariDataSource.<init>:82 -test1 - Start completed.
+2021-01-20 20:36:55.895 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [hm] success
+2021-01-20 20:36:55.895 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.addDataSource:132 -dynamic-datasource - load a datasource named [test1] success
+2021-01-20 20:36:55.896 INFO [main]com.baomidou.dynamic.datasource.DynamicRoutingDataSource.afterPropertiesSet:237 -dynamic-datasource initial loaded [2] datasource,primary datasource named [hm]
+2021-01-20 20:36:57.467 INFO [main]s.d.s.web.PropertySourcedRequestMappingHandlerMapping.initHandlerMethods:69 -Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-20 20:36:57.569 INFO [main]o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:181 -Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-20 20:36:57.941 INFO [main]org.apache.coyote.http11.Http11NioProtocol.log:173 -Starting ProtocolHandler ["http-nio-8081"]
+2021-01-20 20:36:57.966 INFO [main]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:220 -Tomcat started on port(s): 8081 (http) with context path ''
+2021-01-20 20:36:57.967 INFO [main]s.d.spring.web.plugins.DocumentationPluginsBootstrapper.start:160 -Context refreshed
+2021-01-20 20:36:58.008 INFO [main]s.d.spring.web.plugins.DocumentationPluginsBootstrapper.start:163 -Found 1 custom documentation plugin(s)
+2021-01-20 20:36:58.047 INFO [main]s.d.spring.web.scanners.ApiListingReferenceScanner.scan:41 -Scanning for api listing references
+2021-01-20 20:36:58.309 INFO [main]com.information.five.FiveApplication.logStarted:61 -Started FiveApplication in 10.325 seconds (JVM running for 12.484)

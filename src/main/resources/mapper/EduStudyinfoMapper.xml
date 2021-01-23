@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.EduStudyinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.EduStudyinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="TKID" jdbcType="BIGINT" property="tkid" />
+    <result column="XM" jdbcType="VARCHAR" property="xm" />
+    <result column="KMMC" jdbcType="VARCHAR" property="kmmc" />
+    <result column="XXSJ" jdbcType="VARCHAR" property="xxsj" />
+    <result column="STLX" jdbcType="VARCHAR" property="stlx" />
+    <result column="STNR" jdbcType="VARCHAR" property="stnr" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, TKID, XM, KMMC, XXSJ, STLX, STNR, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from edu_studyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="querystudyInfoByKmAndUsername" resultType="java.lang.Integer">
+      select count(1) from edu_studyinfo
+      where KMMC = #{kmmc} and XM = #{xm}
+    </select>
+  <select id="queryStydyByXm" resultType="com.information.five.model.EduStudyinfo">
+    select <include refid="Base_Column_List"/> from edu_studyinfo
+    where XM = #{xm}
+  </select>
+    <select id="queryStudyByQuestinidAndUsername" resultType="java.lang.Integer">
+      select count(1) from edu_studyinfo
+      where TKID = #{questionid} and xm = #{xm}
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from edu_studyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.EduStudyinfo" useGeneratedKeys="true">
+    insert into edu_studyinfo (TKID, XM, KMMC, 
+      XXSJ, STLX, STNR, created_at, 
+      updated_at)
+    values (#{tkid,jdbcType=BIGINT}, #{xm,jdbcType=VARCHAR}, #{kmmc,jdbcType=VARCHAR}, 
+      #{xxsj,jdbcType=VARCHAR}, #{stlx,jdbcType=VARCHAR}, #{stnr,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.EduStudyinfo" useGeneratedKeys="true">
+    insert into edu_studyinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tkid != null">
+        TKID,
+      </if>
+      <if test="xm != null">
+        XM,
+      </if>
+      <if test="kmmc != null">
+        KMMC,
+      </if>
+      <if test="xxsj != null">
+        XXSJ,
+      </if>
+      <if test="stlx != null">
+        STLX,
+      </if>
+      <if test="stnr != null">
+        STNR,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tkid != null">
+        #{tkid,jdbcType=BIGINT},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="kmmc != null">
+        #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxsj != null">
+        #{xxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="stlx != null">
+        #{stlx,jdbcType=VARCHAR},
+      </if>
+      <if test="stnr != null">
+        #{stnr,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.EduStudyinfo">
+    update edu_studyinfo
+    <set>
+      <if test="tkid != null">
+        TKID = #{tkid,jdbcType=BIGINT},
+      </if>
+      <if test="xm != null">
+        XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="kmmc != null">
+        KMMC = #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxsj != null">
+        XXSJ = #{xxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="stlx != null">
+        STLX = #{stlx,jdbcType=VARCHAR},
+      </if>
+      <if test="stnr != null">
+        STNR = #{stnr,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.EduStudyinfo">
+    update edu_studyinfo
+    set TKID = #{tkid,jdbcType=BIGINT},
+      XM = #{xm,jdbcType=VARCHAR},
+      KMMC = #{kmmc,jdbcType=VARCHAR},
+      XXSJ = #{xxsj,jdbcType=VARCHAR},
+      STLX = #{stlx,jdbcType=VARCHAR},
+      STNR = #{stnr,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

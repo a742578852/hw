@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.ScoreMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.Score">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="XH" jdbcType="VARCHAR" property="xh" />
+    <result column="XM" jdbcType="VARCHAR" property="xm" />
+    <result column="XB" jdbcType="VARCHAR" property="xb" />
+    <result column="BJ" jdbcType="VARCHAR" property="bj" />
+    <result column="XY" jdbcType="VARCHAR" property="xy" />
+    <result column="KMMC" jdbcType="VARCHAR" property="kmmc" />
+    <result column="KCMM" jdbcType="VARCHAR" property="kcmm" />
+    <result column="STTIME" jdbcType="VARCHAR" property="sttime" />
+    <result column="ETTIME" jdbcType="VARCHAR" property="ettime" />
+    <result column="CJNF" jdbcType="VARCHAR" property="cjnf" />
+    <result column="SINT" jdbcType="INTEGER" property="sint" />
+    <result column="MULT" jdbcType="INTEGER" property="mult" />
+    <result column="JUGT" jdbcType="INTEGER" property="jugt" />
+    <result column="BLNT" jdbcType="INTEGER" property="blnt" />
+    <result column="TOTAL" jdbcType="INTEGER" property="total" />
+    <result column="SJMCID" jdbcType="INTEGER" property="sjmcid" />
+    <result column="CCID" jdbcType="INTEGER" property="ccid" />
+    <result column="YESNO" jdbcType="INTEGER" property="yesno" />
+    <result column="EXAM_PAPER" jdbcType="VARCHAR" property="examPaper" />
+    <result column="RANDST" jdbcType="VARCHAR" property="randst" />
+    <result column="SJGUID" jdbcType="VARCHAR" property="sjguid" />
+    <result column="isSubmited" jdbcType="INTEGER" property="issubmited" />
+    <result column="ANSWER" jdbcType="VARCHAR" property="answer" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, XH, XM, XB, BJ, XY, KMMC, KCMM, STTIME, ETTIME, CJNF, SINT, MULT, JUGT, BLNT, 
+    TOTAL, SJMCID, CCID, YESNO, EXAM_PAPER, RANDST, SJGUID, isSubmited, ANSWER, created_at, 
+    updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from score
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="getScoreByUsername" resultType="com.information.five.model.Score">
+      select <include refid="Base_Column_List"/> from score
+      where XM = #{xm}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from score
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.Score" useGeneratedKeys="true">
+    insert into score (XH, XM, XB, BJ, 
+      XY, KMMC, KCMM, STTIME, 
+      ETTIME, CJNF, SINT, 
+      MULT, JUGT, BLNT, TOTAL, 
+      SJMCID, CCID, YESNO, 
+      EXAM_PAPER, RANDST, SJGUID, 
+      isSubmited, ANSWER, created_at, 
+      updated_at)
+    values (#{xh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=VARCHAR}, #{bj,jdbcType=VARCHAR}, 
+      #{xy,jdbcType=VARCHAR}, #{kmmc,jdbcType=VARCHAR}, #{kcmm,jdbcType=VARCHAR}, #{sttime,jdbcType=VARCHAR}, 
+      #{ettime,jdbcType=VARCHAR}, #{cjnf,jdbcType=VARCHAR}, #{sint,jdbcType=INTEGER}, 
+      #{mult,jdbcType=INTEGER}, #{jugt,jdbcType=INTEGER}, #{blnt,jdbcType=INTEGER}, #{total,jdbcType=INTEGER}, 
+      #{sjmcid,jdbcType=INTEGER}, #{ccid,jdbcType=INTEGER}, #{yesno,jdbcType=INTEGER}, 
+      #{examPaper,jdbcType=VARCHAR}, #{randst,jdbcType=VARCHAR}, #{sjguid,jdbcType=VARCHAR}, 
+      #{issubmited,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.Score" useGeneratedKeys="true">
+    insert into score
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xh != null">
+        XH,
+      </if>
+      <if test="xm != null">
+        XM,
+      </if>
+      <if test="xb != null">
+        XB,
+      </if>
+      <if test="bj != null">
+        BJ,
+      </if>
+      <if test="xy != null">
+        XY,
+      </if>
+      <if test="kmmc != null">
+        KMMC,
+      </if>
+      <if test="kcmm != null">
+        KCMM,
+      </if>
+      <if test="sttime != null">
+        STTIME,
+      </if>
+      <if test="ettime != null">
+        ETTIME,
+      </if>
+      <if test="cjnf != null">
+        CJNF,
+      </if>
+      <if test="sint != null">
+        SINT,
+      </if>
+      <if test="mult != null">
+        MULT,
+      </if>
+      <if test="jugt != null">
+        JUGT,
+      </if>
+      <if test="blnt != null">
+        BLNT,
+      </if>
+      <if test="total != null">
+        TOTAL,
+      </if>
+      <if test="sjmcid != null">
+        SJMCID,
+      </if>
+      <if test="ccid != null">
+        CCID,
+      </if>
+      <if test="yesno != null">
+        YESNO,
+      </if>
+      <if test="examPaper != null">
+        EXAM_PAPER,
+      </if>
+      <if test="randst != null">
+        RANDST,
+      </if>
+      <if test="sjguid != null">
+        SJGUID,
+      </if>
+      <if test="issubmited != null">
+        isSubmited,
+      </if>
+      <if test="answer != null">
+        ANSWER,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xh != null">
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null">
+        #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="xy != null">
+        #{xy,jdbcType=VARCHAR},
+      </if>
+      <if test="kmmc != null">
+        #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="kcmm != null">
+        #{kcmm,jdbcType=VARCHAR},
+      </if>
+      <if test="sttime != null">
+        #{sttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ettime != null">
+        #{ettime,jdbcType=VARCHAR},
+      </if>
+      <if test="cjnf != null">
+        #{cjnf,jdbcType=VARCHAR},
+      </if>
+      <if test="sint != null">
+        #{sint,jdbcType=INTEGER},
+      </if>
+      <if test="mult != null">
+        #{mult,jdbcType=INTEGER},
+      </if>
+      <if test="jugt != null">
+        #{jugt,jdbcType=INTEGER},
+      </if>
+      <if test="blnt != null">
+        #{blnt,jdbcType=INTEGER},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="sjmcid != null">
+        #{sjmcid,jdbcType=INTEGER},
+      </if>
+      <if test="ccid != null">
+        #{ccid,jdbcType=INTEGER},
+      </if>
+      <if test="yesno != null">
+        #{yesno,jdbcType=INTEGER},
+      </if>
+      <if test="examPaper != null">
+        #{examPaper,jdbcType=VARCHAR},
+      </if>
+      <if test="randst != null">
+        #{randst,jdbcType=VARCHAR},
+      </if>
+      <if test="sjguid != null">
+        #{sjguid,jdbcType=VARCHAR},
+      </if>
+      <if test="issubmited != null">
+        #{issubmited,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.Score">
+    update score
+    <set>
+      <if test="xh != null">
+        XH = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        XB = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null">
+        BJ = #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="xy != null">
+        XY = #{xy,jdbcType=VARCHAR},
+      </if>
+      <if test="kmmc != null">
+        KMMC = #{kmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="kcmm != null">
+        KCMM = #{kcmm,jdbcType=VARCHAR},
+      </if>
+      <if test="sttime != null">
+        STTIME = #{sttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ettime != null">
+        ETTIME = #{ettime,jdbcType=VARCHAR},
+      </if>
+      <if test="cjnf != null">
+        CJNF = #{cjnf,jdbcType=VARCHAR},
+      </if>
+      <if test="sint != null">
+        SINT = #{sint,jdbcType=INTEGER},
+      </if>
+      <if test="mult != null">
+        MULT = #{mult,jdbcType=INTEGER},
+      </if>
+      <if test="jugt != null">
+        JUGT = #{jugt,jdbcType=INTEGER},
+      </if>
+      <if test="blnt != null">
+        BLNT = #{blnt,jdbcType=INTEGER},
+      </if>
+      <if test="total != null">
+        TOTAL = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="sjmcid != null">
+        SJMCID = #{sjmcid,jdbcType=INTEGER},
+      </if>
+      <if test="ccid != null">
+        CCID = #{ccid,jdbcType=INTEGER},
+      </if>
+      <if test="yesno != null">
+        YESNO = #{yesno,jdbcType=INTEGER},
+      </if>
+      <if test="examPaper != null">
+        EXAM_PAPER = #{examPaper,jdbcType=VARCHAR},
+      </if>
+      <if test="randst != null">
+        RANDST = #{randst,jdbcType=VARCHAR},
+      </if>
+      <if test="sjguid != null">
+        SJGUID = #{sjguid,jdbcType=VARCHAR},
+      </if>
+      <if test="issubmited != null">
+        isSubmited = #{issubmited,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null">
+        ANSWER = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.Score">
+    update score
+    set XH = #{xh,jdbcType=VARCHAR},
+      XM = #{xm,jdbcType=VARCHAR},
+      XB = #{xb,jdbcType=VARCHAR},
+      BJ = #{bj,jdbcType=VARCHAR},
+      XY = #{xy,jdbcType=VARCHAR},
+      KMMC = #{kmmc,jdbcType=VARCHAR},
+      KCMM = #{kcmm,jdbcType=VARCHAR},
+      STTIME = #{sttime,jdbcType=VARCHAR},
+      ETTIME = #{ettime,jdbcType=VARCHAR},
+      CJNF = #{cjnf,jdbcType=VARCHAR},
+      SINT = #{sint,jdbcType=INTEGER},
+      MULT = #{mult,jdbcType=INTEGER},
+      JUGT = #{jugt,jdbcType=INTEGER},
+      BLNT = #{blnt,jdbcType=INTEGER},
+      TOTAL = #{total,jdbcType=INTEGER},
+      SJMCID = #{sjmcid,jdbcType=INTEGER},
+      CCID = #{ccid,jdbcType=INTEGER},
+      YESNO = #{yesno,jdbcType=INTEGER},
+      EXAM_PAPER = #{examPaper,jdbcType=VARCHAR},
+      RANDST = #{randst,jdbcType=VARCHAR},
+      SJGUID = #{sjguid,jdbcType=VARCHAR},
+      isSubmited = #{issubmited,jdbcType=INTEGER},
+      ANSWER = #{answer,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
