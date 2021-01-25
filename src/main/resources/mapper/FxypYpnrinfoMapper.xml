@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.FxypYpnrinfoMapper">
+    <resultMap id="BaseResultMap" type="com.information.five.model.FxypYpnrinfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="BZJID" jdbcType="BIGINT" property="bzjid"/>
+        <result column="CJID" jdbcType="BIGINT" property="cjid"/>
+        <result column="GSID" jdbcType="BIGINT" property="gsid"/>
+        <result column="XH" jdbcType="INTEGER" property="xh"/>
+        <result column="YPJG" jdbcType="VARCHAR" property="ypjg"/>
+        <result column="GKCS" jdbcType="VARCHAR" property="gkcs"/>
+        <result column="YPNR" jdbcType="VARCHAR" property="ypnr"/>
+        <result column="YPLB" jdbcType="VARCHAR" property="yplb"/>
+        <result column="BZ" jdbcType="VARCHAR" property="bz"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, BZJID, CJID, GSID, XH, YPJG, GKCS, YPNR, YPLB, BZ, created_at, updated_at
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from fxyp_ypnrinfo
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="queryYpnrinfoByBid" resultType="com.information.five.model.FxypYpnrinfo">
+      select * from
+      fxyp_ypnrinfo
+      where bid = #{bid}
+      order by xh
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fxyp_ypnrinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.FxypYpnrinfo"
+            useGeneratedKeys="true">
+    insert into fxyp_ypnrinfo (BZJID, CJID, GSID, 
+      XH, YPJG, GKCS, YPNR, 
+      YPLB, BZ, created_at, 
+      updated_at)
+    values (#{bzjid,jdbcType=BIGINT}, #{cjid,jdbcType=BIGINT}, #{gsid,jdbcType=BIGINT}, 
+      #{xh,jdbcType=INTEGER}, #{ypjg,jdbcType=VARCHAR}, #{gkcs,jdbcType=VARCHAR}, #{ypnr,jdbcType=VARCHAR}, 
+      #{yplb,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.FxypYpnrinfo"
+            useGeneratedKeys="true">
+        insert into fxyp_ypnrinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bzjid != null">
+                BZJID,
+            </if>
+            <if test="cjid != null">
+                CJID,
+            </if>
+            <if test="gsid != null">
+                GSID,
+            </if>
+            <if test="xh != null">
+                XH,
+            </if>
+            <if test="ypjg != null">
+                YPJG,
+            </if>
+            <if test="gkcs != null">
+                GKCS,
+            </if>
+            <if test="ypnr != null">
+                YPNR,
+            </if>
+            <if test="yplb != null">
+                YPLB,
+            </if>
+            <if test="bz != null">
+                BZ,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bzjid != null">
+                #{bzjid,jdbcType=BIGINT},
+            </if>
+            <if test="cjid != null">
+                #{cjid,jdbcType=BIGINT},
+            </if>
+            <if test="gsid != null">
+                #{gsid,jdbcType=BIGINT},
+            </if>
+            <if test="xh != null">
+                #{xh,jdbcType=INTEGER},
+            </if>
+            <if test="ypjg != null">
+                #{ypjg,jdbcType=VARCHAR},
+            </if>
+            <if test="gkcs != null">
+                #{gkcs,jdbcType=VARCHAR},
+            </if>
+            <if test="ypnr != null">
+                #{ypnr,jdbcType=VARCHAR},
+            </if>
+            <if test="yplb != null">
+                #{yplb,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                #{bz,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.FxypYpnrinfo">
+        update fxyp_ypnrinfo
+        <set>
+            <if test="bzjid != null">
+                BZJID = #{bzjid,jdbcType=BIGINT},
+            </if>
+            <if test="cjid != null">
+                CJID = #{cjid,jdbcType=BIGINT},
+            </if>
+            <if test="gsid != null">
+                GSID = #{gsid,jdbcType=BIGINT},
+            </if>
+            <if test="xh != null">
+                XH = #{xh,jdbcType=INTEGER},
+            </if>
+            <if test="ypjg != null">
+                YPJG = #{ypjg,jdbcType=VARCHAR},
+            </if>
+            <if test="gkcs != null">
+                GKCS = #{gkcs,jdbcType=VARCHAR},
+            </if>
+            <if test="ypnr != null">
+                YPNR = #{ypnr,jdbcType=VARCHAR},
+            </if>
+            <if test="yplb != null">
+                YPLB = #{yplb,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                BZ = #{bz,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.information.five.model.FxypYpnrinfo">
+    update fxyp_ypnrinfo
+    set BZJID = #{bzjid,jdbcType=BIGINT},
+      CJID = #{cjid,jdbcType=BIGINT},
+      GSID = #{gsid,jdbcType=BIGINT},
+      XH = #{xh,jdbcType=INTEGER},
+      YPJG = #{ypjg,jdbcType=VARCHAR},
+      GKCS = #{gkcs,jdbcType=VARCHAR},
+      YPNR = #{ypnr,jdbcType=VARCHAR},
+      YPLB = #{yplb,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

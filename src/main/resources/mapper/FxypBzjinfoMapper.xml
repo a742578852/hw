@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.FxypBzjinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.FxypBzjinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="TBR" jdbcType="VARCHAR" property="tbr" />
+    <result column="CJID" jdbcType="BIGINT" property="cjid" />
+    <result column="CJ" jdbcType="VARCHAR" property="cj" />
+    <result column="GSID" jdbcType="BIGINT" property="gsid" />
+    <result column="GS" jdbcType="VARCHAR" property="gs" />
+    <result column="TBRQ" jdbcType="VARCHAR" property="tbrq" />
+    <result column="FJ" jdbcType="VARCHAR" property="fj" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, BZ, TBR, CJID, CJ, GSID, GS, TBRQ, FJ, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fxyp_bzjinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryBzjinfo" resultType="com.information.five.model.FxypBzjinfo">
+
+      select <include refid="Base_Column_List"></include>
+      from fxyp_bzjinfo
+      order by created_at desc
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fxyp_bzjinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.FxypBzjinfo" useGeneratedKeys="true">
+    insert into fxyp_bzjinfo (BZ, TBR, CJID, 
+      CJ, GSID, GS, TBRQ, 
+      FJ, created_at, updated_at
+      )
+    values (#{bz,jdbcType=VARCHAR}, #{tbr,jdbcType=VARCHAR}, #{cjid,jdbcType=BIGINT}, 
+      #{cj,jdbcType=VARCHAR}, #{gsid,jdbcType=BIGINT}, #{gs,jdbcType=VARCHAR}, #{tbrq,jdbcType=VARCHAR}, 
+      #{fj,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.FxypBzjinfo" useGeneratedKeys="true">
+    insert into fxyp_bzjinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="tbr != null">
+        TBR,
+      </if>
+      <if test="cjid != null">
+        CJID,
+      </if>
+      <if test="cj != null">
+        CJ,
+      </if>
+      <if test="gsid != null">
+        GSID,
+      </if>
+      <if test="gs != null">
+        GS,
+      </if>
+      <if test="tbrq != null">
+        TBRQ,
+      </if>
+      <if test="fj != null">
+        FJ,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="cjid != null">
+        #{cjid,jdbcType=BIGINT},
+      </if>
+      <if test="cj != null">
+        #{cj,jdbcType=VARCHAR},
+      </if>
+      <if test="gsid != null">
+        #{gsid,jdbcType=BIGINT},
+      </if>
+      <if test="gs != null">
+        #{gs,jdbcType=VARCHAR},
+      </if>
+      <if test="tbrq != null">
+        #{tbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="fj != null">
+        #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.FxypBzjinfo">
+    update fxyp_bzjinfo
+    <set>
+      <if test="bz != null">
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        TBR = #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="cjid != null">
+        CJID = #{cjid,jdbcType=BIGINT},
+      </if>
+      <if test="cj != null">
+        CJ = #{cj,jdbcType=VARCHAR},
+      </if>
+      <if test="gsid != null">
+        GSID = #{gsid,jdbcType=BIGINT},
+      </if>
+      <if test="gs != null">
+        GS = #{gs,jdbcType=VARCHAR},
+      </if>
+      <if test="tbrq != null">
+        TBRQ = #{tbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="fj != null">
+        FJ = #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.FxypBzjinfo">
+    update fxyp_bzjinfo
+    set BZ = #{bz,jdbcType=VARCHAR},
+      TBR = #{tbr,jdbcType=VARCHAR},
+      CJID = #{cjid,jdbcType=BIGINT},
+      CJ = #{cj,jdbcType=VARCHAR},
+      GSID = #{gsid,jdbcType=BIGINT},
+      GS = #{gs,jdbcType=VARCHAR},
+      TBRQ = #{tbrq,jdbcType=VARCHAR},
+      FJ = #{fj,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
