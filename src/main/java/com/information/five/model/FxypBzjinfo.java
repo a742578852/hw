@@ -22,14 +22,29 @@ public class FxypBzjinfo implements Serializable {
      */
     private String tbr;
 
+    /**
+     * 车间汇总记录id
+     */
     private Long cjid;
 
+    /**
+     * 车间名
+     */
     private String cj;
 
+    /**
+     * 公司id
+     */
     private Long gsid;
 
+    /**
+     * 公司名
+     */
     private String gs;
 
+    /**
+     * 填报日期
+     */
     private String tbrq;
 
     /**

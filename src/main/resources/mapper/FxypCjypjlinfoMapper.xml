@@ -36,7 +36,18 @@
     from fxyp_cjypjlinfo
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="queryCjInfo" resultType="com.information.five.model.FxypCjypjlinfo">
+      select <include refid="Base_Column_List"></include>
+      from fxyp_cjypjlinfo
+      order by sbsj desc
+
+    </select>
+    <select id="queryCjinfoByDate" resultType="com.information.five.model.FxypCjypjlinfo">
+      select <include refid="Base_Column_List"></include>
+      from fxyp_cjypjlinfo
+      where sbsj like concat(#{date},'%')
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from fxyp_cjypjlinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("login")
 @Api(tags = "登录相关")
@@ -48,7 +51,10 @@ public class LoginController {
             //获取用户信息
             SystemAdmin systemAdmin = systemAdminService.getSystemAdminByUserName(username,db);
             String token = JwtUtils.geneJsonToken(systemAdmin,db);
-            return new Result(200,true,"token获取成功",token);
+            Map map = new HashMap();
+            map.put("token",token);
+            map.put("admin",systemAdmin);
+            return new Result(200,true,"token获取成功",map);
         }else {
             return new Result(201,true,"账号密码错误");
         }

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.BaseBminfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.BaseBminfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="BMID" jdbcType="VARCHAR" property="bmid" />
+    <result column="BMMC" jdbcType="VARCHAR" property="bmmc" />
+    <result column="SJBM" jdbcType="VARCHAR" property="sjbm" />
+    <result column="LX" jdbcType="VARCHAR" property="lx" />
+    <result column="SFQY" jdbcType="INTEGER" property="sfqy" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="PX" jdbcType="INTEGER" property="px" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, BMID, BMMC, SJBM, LX, SFQY, BZ, PX, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from base_bminfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryAll" resultType="com.information.five.model.BaseBminfo">
+      select <include refid="Base_Column_List"></include>
+      from base_bminfo where sfqy = 1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from base_bminfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.BaseBminfo" useGeneratedKeys="true">
+    insert into base_bminfo (BMID, BMMC, SJBM, 
+      LX, SFQY, BZ, PX, 
+      created_at, updated_at)
+    values (#{bmid,jdbcType=VARCHAR}, #{bmmc,jdbcType=VARCHAR}, #{sjbm,jdbcType=VARCHAR}, 
+      #{lx,jdbcType=VARCHAR}, #{sfqy,jdbcType=INTEGER}, #{bz,jdbcType=VARCHAR}, #{px,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.BaseBminfo" useGeneratedKeys="true">
+    insert into base_bminfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bmid != null">
+        BMID,
+      </if>
+      <if test="bmmc != null">
+        BMMC,
+      </if>
+      <if test="sjbm != null">
+        SJBM,
+      </if>
+      <if test="lx != null">
+        LX,
+      </if>
+      <if test="sfqy != null">
+        SFQY,
+      </if>
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="px != null">
+        PX,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bmid != null">
+        #{bmid,jdbcType=VARCHAR},
+      </if>
+      <if test="bmmc != null">
+        #{bmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sjbm != null">
+        #{sjbm,jdbcType=VARCHAR},
+      </if>
+      <if test="lx != null">
+        #{lx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfqy != null">
+        #{sfqy,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="px != null">
+        #{px,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.BaseBminfo">
+    update base_bminfo
+    <set>
+      <if test="bmid != null">
+        BMID = #{bmid,jdbcType=VARCHAR},
+      </if>
+      <if test="bmmc != null">
+        BMMC = #{bmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sjbm != null">
+        SJBM = #{sjbm,jdbcType=VARCHAR},
+      </if>
+      <if test="lx != null">
+        LX = #{lx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfqy != null">
+        SFQY = #{sfqy,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null">
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="px != null">
+        PX = #{px,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.BaseBminfo">
+    update base_bminfo
+    set BMID = #{bmid,jdbcType=VARCHAR},
+      BMMC = #{bmmc,jdbcType=VARCHAR},
+      SJBM = #{sjbm,jdbcType=VARCHAR},
+      LX = #{lx,jdbcType=VARCHAR},
+      SFQY = #{sfqy,jdbcType=INTEGER},
+      BZ = #{bz,jdbcType=VARCHAR},
+      PX = #{px,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

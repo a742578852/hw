@@ -58,7 +58,17 @@
       from fxyp_aqcninfo
       where bzjid = #{bid}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <select id="getAqcnByList" resultType="com.information.five.model.FxypAqcninfo">
+    select <include refid="Base_Column_List"></include>
+    from fxyp_aqcninfo
+    where bzjid in
+    <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from fxyp_aqcninfo
     where id = #{id,jdbcType=BIGINT}
   </delete>
@@ -483,4 +493,13 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+    <update id="updateGsidByList">
+
+      update fxyp_aqcninfo
+      set gsid = #{gsid}
+        where bzjid in
+      <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+    </update>
 </mapper>

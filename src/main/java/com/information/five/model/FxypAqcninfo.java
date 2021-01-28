@@ -25,6 +25,9 @@ public class FxypAqcninfo implements Serializable {
 
     private String tbr;
 
+    /**
+     * 班组名称
+     */
     private String bmmc;
 
     /**

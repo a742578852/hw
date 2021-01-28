@@ -27,8 +27,17 @@
     <select id="queryYpnrinfoByBid" resultType="com.information.five.model.FxypYpnrinfo">
       select * from
       fxyp_ypnrinfo
-      where bid = #{bid}
+      where bzjid = #{bid}
       order by xh
+    </select>
+
+    <select id="queryYpnrByBzid" resultType="com.information.five.model.FxypYpnrinfo">
+        select <include refid="Base_Column_List"></include>
+        from fxyp_ypnrinfo
+        where bzjid in
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from fxyp_ypnrinfo
@@ -173,4 +182,22 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+    <update id="updateCjidByBzjid">
+        update fxyp_ypnrinfo
+        set cjid = #{cjid}
+        where bzjid in
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+    </update>
+    <update id="updateYpnrByList">
+        update fxyp_ypnrinfo
+        set gsid = #{gsid}
+        where bzjid in
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+    </update>
 </mapper>

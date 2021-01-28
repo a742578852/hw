@@ -70,4 +70,14 @@ public class RiskServiceImpl implements RiskService {
 
         return 1;
     }
+
+    @Override
+    @DS("#db")
+    public YhpcYhzgdinfo getDangerDetail(String db, Long id) {
+
+
+        return yhpcYhzgdinfoMapper.selectByPrimaryKey(id);
+    }
+
+
 }

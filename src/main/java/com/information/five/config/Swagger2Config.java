@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Modify By:
  **/
 @Configuration
-@EnableSwagger2
+
 public class Swagger2Config {
     /*
     通过函数构建DocketBen

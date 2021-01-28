@@ -53,4 +53,15 @@ public interface RiskService {
      * @return
      */
     int addYhzgdinfo(String db,YhpcYhzgdinfo yhpcYhzgdinfo);
+
+    /**
+     * 根据id查询隐患单详情
+     * @param db
+     * @param id
+     * @return
+     */
+    YhpcYhzgdinfo getDangerDetail(String db,Long id);
+
+
+
 }

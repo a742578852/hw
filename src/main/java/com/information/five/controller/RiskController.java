@@ -76,6 +76,14 @@ public class RiskController {
         return new Result(200, true, "获取成功", yhpcYhzgdinfos);
     }
 
+    @PostMapping("getDangerDetail")
+    @ApiOperation("获取隐患整改单详情")
+    public Result getDangerDetail(Long id,HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",riskService.getDangerDetail(db,id));
+    }
+
 
     @PostMapping("riskReport")
     @ApiOperation("风险上报添加/修改")
@@ -211,6 +219,8 @@ public class RiskController {
 
 
     }
+
+
 
 
 }

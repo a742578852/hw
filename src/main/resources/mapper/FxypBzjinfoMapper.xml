@@ -30,7 +30,31 @@
       order by created_at desc
 
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <select id="queryBzjinfoByDadeAndCj" resultType="com.information.five.model.FxypBzjinfo">
+
+    select <include refid="Base_Column_List"></include>
+    from fxyp_bzjinfo
+    where
+    created_at like concat(#{date},'%')
+    and cj = #{cj}
+  </select>
+  <select id="queryBzjinfoByCjid" resultType="com.information.five.model.FxypBzjinfo">
+    select <include refid="Base_Column_List"></include>
+    from fxyp_bzjinfo
+    where cjid = #{cjid}
+  </select>
+    <select id="queryBzinfoByDate" resultType="com.information.five.model.FxypBzjinfo">
+      select <include refid="Base_Column_List"></include>
+      from fxyp_bzjinfo
+      where tbrq like concat(#{date},'%')
+    </select>
+  <select id="queryBzjinfoByGsid" resultType="com.information.five.model.FxypBzjinfo">
+    select <include refid="Base_Column_List"></include>
+    from fxyp_bzjinfo
+    where gsid = #{gsid}
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from fxyp_bzjinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>

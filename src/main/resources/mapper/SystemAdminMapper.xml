@@ -31,7 +31,19 @@
     select <include refid="Base_Column_List"/> from system_admin
     where username = #{username}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="queryAdminByParms" resultType="com.information.five.model.SystemAdmin">
+
+      select <include refid="Base_Column_List"></include>
+      from system_admin
+      where 1=1
+        <if test="userName != null and userName != ''">
+          and CONCAT(username, nick) LIKE CONCAT('%',#{userName},'%')
+        </if>
+
+
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from system_admin
     where id = #{id,jdbcType=BIGINT}
   </delete>
