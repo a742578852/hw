@@ -1,11 +1,11 @@
 package com.information.five.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.information.five.config.DicConfig;
 import com.information.five.mapper.YhpcYhzgdinfoMapper;
-import com.information.five.model.FxbsFxsbinfo;
-import com.information.five.model.SystemAdmin;
-import com.information.five.model.YhpcYhzgdinfo;
+import com.information.five.model.*;
 import com.information.five.service.RiskService;
 import com.information.five.service.SystemAdminService;
 import com.information.five.util.DateUtils;
@@ -16,10 +16,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -29,6 +26,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Api(tags = "风险上报,隐患整改相关")
@@ -217,10 +215,56 @@ public class RiskController {
             return new Result(204, true, "操作失败");
         }
 
+    }
+
+    @PostMapping("getCheckrecordList")
+    @ApiOperation("获取检查记录")
+    public Result getCheckrecordList(HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",riskService.getCheckrecord(db));
+
+    }
+
+    @PostMapping("getCheckRecordDetail")
+    @ApiOperation("获取检查记录详情")
+    public Result getCheckRecordDetail(HttpServletRequest request,Long checkId){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",riskService.getCheckRecordDetail(db,checkId));
+    }
+
+    @PostMapping("getCheckForm")
+    @ApiOperation("获取检查表")
+    public Result getCheckForm(HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",riskService.getCheckForm(db));
+    }
+
+    @PostMapping("getCheckFormDetail")
+    @ApiOperation("获取检查表详细项目")
+    public Result getCheckFormDetail(HttpServletRequest request,Long formId){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",riskService.getCheckRecordDetail(db,formId));
 
     }
 
 
+
+    @PostMapping("addCheckRecord")
+    @ApiOperation("添加检查记录")
+    public Result addCheckRecord(@RequestBody Map<String, Object> map,HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+        ObjectMapper objectMapper = new ObjectMapper();
+        YhpcJcbinfo yhpcJcbinfo = objectMapper.convertValue(map.get("jcb"),YhpcJcbinfo.class);
+
+        List<YhpcJcbxxinfo> yhpcJcbxxinfos = JSON.parseObject(JSON.toJSONString(map.get("jcbcc")),List.class);
+
+        riskService.addCheckRecord(db,yhpcJcbinfo,yhpcJcbxxinfos);
+        return new Result(200,true,"添加成功");
+    }
 
 
 }

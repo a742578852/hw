@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.ZyaqDtzinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.ZyaqDtzinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ZYZBH" jdbcType="VARCHAR" property="zyzbh" />
+    <result column="SQRQ" jdbcType="VARCHAR" property="sqrq" />
+    <result column="ZYZMC" jdbcType="VARCHAR" property="zyzmc" />
+    <result column="JHX" jdbcType="INTEGER" property="jhx" />
+    <result column="SQDW" jdbcType="VARCHAR" property="sqdw" />
+    <result column="SQR" jdbcType="VARCHAR" property="sqr" />
+    <result column="ZYDW" jdbcType="VARCHAR" property="zydw" />
+    <result column="ZYFZR" jdbcType="VARCHAR" property="zyfzr" />
+    <result column="SSAQJYR" jdbcType="VARCHAR" property="ssaqjyr" />
+    <result column="BZR" jdbcType="VARCHAR" property="bzr" />
+    <result column="DTFW" jdbcType="VARCHAR" property="dtfw" />
+    <result column="DTFS" jdbcType="VARCHAR" property="dtfs" />
+    <result column="DYJRD" jdbcType="VARCHAR" property="dyjrd" />
+    <result column="SYDY" jdbcType="VARCHAR" property="sydy" />
+    <result column="SGZXM" jdbcType="VARCHAR" property="sgzxm" />
+    <result column="DTNR" jdbcType="VARCHAR" property="dtnr" />
+    <result column="DTJT" jdbcType="VARCHAR" property="dtjt" />
+    <result column="DTDD" jdbcType="VARCHAR" property="dtdd" />
+    <result column="SGFA" jdbcType="VARCHAR" property="sgfa" />
+    <result column="SJQTZYZ" jdbcType="VARCHAR" property="sjqtzyz" />
+    <result column="JHR" jdbcType="VARCHAR" property="jhr" />
+    <result column="JHRGW" jdbcType="VARCHAR" property="jhrgw" />
+    <result column="ZYQX" jdbcType="VARCHAR" property="zyqx" />
+    <result column="WHBS" jdbcType="VARCHAR" property="whbs" />
+    <result column="AQCS" jdbcType="VARCHAR" property="aqcs" />
+    <result column="SSQK" jdbcType="VARCHAR" property="ssqk" />
+    <result column="JHQK" jdbcType="VARCHAR" property="jhqk" />
+    <result column="SHZT" jdbcType="INTEGER" property="shzt" />
+    <result column="JDMC" jdbcType="VARCHAR" property="jdmc" />
+    <result column="RYID" jdbcType="INTEGER" property="ryid" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ZYZBH, SQRQ, ZYZMC, JHX, SQDW, SQR, ZYDW, ZYFZR, SSAQJYR, BZR, DTFW, DTFS, DYJRD, 
+    SYDY, SGZXM, DTNR, DTJT, DTDD, SGFA, SJQTZYZ, JHR, JHRGW, ZYQX, WHBS, AQCS, SSQK, 
+    JHQK, SHZT, JDMC, RYID, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zyaq_dtzinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryAll" resultType="com.information.five.model.ZyaqDtzinfo">
+      select <include refid="Base_Column_List"></include>
+      from zyaq_dtzinfo
+      order by sqrq desc
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from zyaq_dtzinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.ZyaqDtzinfo" useGeneratedKeys="true">
+    insert into zyaq_dtzinfo (ZYZBH, SQRQ, ZYZMC, 
+      JHX, SQDW, SQR, ZYDW, 
+      ZYFZR, SSAQJYR, BZR, 
+      DTFW, DTFS, DYJRD, 
+      SYDY, SGZXM, DTNR, 
+      DTJT, DTDD, SGFA, SJQTZYZ, 
+      JHR, JHRGW, ZYQX, WHBS, 
+      AQCS, SSQK, JHQK, SHZT, 
+      JDMC, RYID, created_at, 
+      updated_at)
+    values (#{zyzbh,jdbcType=VARCHAR}, #{sqrq,jdbcType=VARCHAR}, #{zyzmc,jdbcType=VARCHAR}, 
+      #{jhx,jdbcType=INTEGER}, #{sqdw,jdbcType=VARCHAR}, #{sqr,jdbcType=VARCHAR}, #{zydw,jdbcType=VARCHAR}, 
+      #{zyfzr,jdbcType=VARCHAR}, #{ssaqjyr,jdbcType=VARCHAR}, #{bzr,jdbcType=VARCHAR}, 
+      #{dtfw,jdbcType=VARCHAR}, #{dtfs,jdbcType=VARCHAR}, #{dyjrd,jdbcType=VARCHAR}, 
+      #{sydy,jdbcType=VARCHAR}, #{sgzxm,jdbcType=VARCHAR}, #{dtnr,jdbcType=VARCHAR}, 
+      #{dtjt,jdbcType=VARCHAR}, #{dtdd,jdbcType=VARCHAR}, #{sgfa,jdbcType=VARCHAR}, #{sjqtzyz,jdbcType=VARCHAR}, 
+      #{jhr,jdbcType=VARCHAR}, #{jhrgw,jdbcType=VARCHAR}, #{zyqx,jdbcType=VARCHAR}, #{whbs,jdbcType=VARCHAR}, 
+      #{aqcs,jdbcType=VARCHAR}, #{ssqk,jdbcType=VARCHAR}, #{jhqk,jdbcType=VARCHAR}, #{shzt,jdbcType=INTEGER}, 
+      #{jdmc,jdbcType=VARCHAR}, #{ryid,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.ZyaqDtzinfo" useGeneratedKeys="true">
+    insert into zyaq_dtzinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zyzbh != null">
+        ZYZBH,
+      </if>
+      <if test="sqrq != null">
+        SQRQ,
+      </if>
+      <if test="zyzmc != null">
+        ZYZMC,
+      </if>
+      <if test="jhx != null">
+        JHX,
+      </if>
+      <if test="sqdw != null">
+        SQDW,
+      </if>
+      <if test="sqr != null">
+        SQR,
+      </if>
+      <if test="zydw != null">
+        ZYDW,
+      </if>
+      <if test="zyfzr != null">
+        ZYFZR,
+      </if>
+      <if test="ssaqjyr != null">
+        SSAQJYR,
+      </if>
+      <if test="bzr != null">
+        BZR,
+      </if>
+      <if test="dtfw != null">
+        DTFW,
+      </if>
+      <if test="dtfs != null">
+        DTFS,
+      </if>
+      <if test="dyjrd != null">
+        DYJRD,
+      </if>
+      <if test="sydy != null">
+        SYDY,
+      </if>
+      <if test="sgzxm != null">
+        SGZXM,
+      </if>
+      <if test="dtnr != null">
+        DTNR,
+      </if>
+      <if test="dtjt != null">
+        DTJT,
+      </if>
+      <if test="dtdd != null">
+        DTDD,
+      </if>
+      <if test="sgfa != null">
+        SGFA,
+      </if>
+      <if test="sjqtzyz != null">
+        SJQTZYZ,
+      </if>
+      <if test="jhr != null">
+        JHR,
+      </if>
+      <if test="jhrgw != null">
+        JHRGW,
+      </if>
+      <if test="zyqx != null">
+        ZYQX,
+      </if>
+      <if test="whbs != null">
+        WHBS,
+      </if>
+      <if test="aqcs != null">
+        AQCS,
+      </if>
+      <if test="ssqk != null">
+        SSQK,
+      </if>
+      <if test="jhqk != null">
+        JHQK,
+      </if>
+      <if test="shzt != null">
+        SHZT,
+      </if>
+      <if test="jdmc != null">
+        JDMC,
+      </if>
+      <if test="ryid != null">
+        RYID,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zyzbh != null">
+        #{zyzbh,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrq != null">
+        #{sqrq,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzmc != null">
+        #{zyzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jhx != null">
+        #{jhx,jdbcType=INTEGER},
+      </if>
+      <if test="sqdw != null">
+        #{sqdw,jdbcType=VARCHAR},
+      </if>
+      <if test="sqr != null">
+        #{sqr,jdbcType=VARCHAR},
+      </if>
+      <if test="zydw != null">
+        #{zydw,jdbcType=VARCHAR},
+      </if>
+      <if test="zyfzr != null">
+        #{zyfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="ssaqjyr != null">
+        #{ssaqjyr,jdbcType=VARCHAR},
+      </if>
+      <if test="bzr != null">
+        #{bzr,jdbcType=VARCHAR},
+      </if>
+      <if test="dtfw != null">
+        #{dtfw,jdbcType=VARCHAR},
+      </if>
+      <if test="dtfs != null">
+        #{dtfs,jdbcType=VARCHAR},
+      </if>
+      <if test="dyjrd != null">
+        #{dyjrd,jdbcType=VARCHAR},
+      </if>
+      <if test="sydy != null">
+        #{sydy,jdbcType=VARCHAR},
+      </if>
+      <if test="sgzxm != null">
+        #{sgzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="dtnr != null">
+        #{dtnr,jdbcType=VARCHAR},
+      </if>
+      <if test="dtjt != null">
+        #{dtjt,jdbcType=VARCHAR},
+      </if>
+      <if test="dtdd != null">
+        #{dtdd,jdbcType=VARCHAR},
+      </if>
+      <if test="sgfa != null">
+        #{sgfa,jdbcType=VARCHAR},
+      </if>
+      <if test="sjqtzyz != null">
+        #{sjqtzyz,jdbcType=VARCHAR},
+      </if>
+      <if test="jhr != null">
+        #{jhr,jdbcType=VARCHAR},
+      </if>
+      <if test="jhrgw != null">
+        #{jhrgw,jdbcType=VARCHAR},
+      </if>
+      <if test="zyqx != null">
+        #{zyqx,jdbcType=VARCHAR},
+      </if>
+      <if test="whbs != null">
+        #{whbs,jdbcType=VARCHAR},
+      </if>
+      <if test="aqcs != null">
+        #{aqcs,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqk != null">
+        #{ssqk,jdbcType=VARCHAR},
+      </if>
+      <if test="jhqk != null">
+        #{jhqk,jdbcType=VARCHAR},
+      </if>
+      <if test="shzt != null">
+        #{shzt,jdbcType=INTEGER},
+      </if>
+      <if test="jdmc != null">
+        #{jdmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ryid != null">
+        #{ryid,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.ZyaqDtzinfo">
+    update zyaq_dtzinfo
+    <set>
+      <if test="zyzbh != null">
+        ZYZBH = #{zyzbh,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrq != null">
+        SQRQ = #{sqrq,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzmc != null">
+        ZYZMC = #{zyzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jhx != null">
+        JHX = #{jhx,jdbcType=INTEGER},
+      </if>
+      <if test="sqdw != null">
+        SQDW = #{sqdw,jdbcType=VARCHAR},
+      </if>
+      <if test="sqr != null">
+        SQR = #{sqr,jdbcType=VARCHAR},
+      </if>
+      <if test="zydw != null">
+        ZYDW = #{zydw,jdbcType=VARCHAR},
+      </if>
+      <if test="zyfzr != null">
+        ZYFZR = #{zyfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="ssaqjyr != null">
+        SSAQJYR = #{ssaqjyr,jdbcType=VARCHAR},
+      </if>
+      <if test="bzr != null">
+        BZR = #{bzr,jdbcType=VARCHAR},
+      </if>
+      <if test="dtfw != null">
+        DTFW = #{dtfw,jdbcType=VARCHAR},
+      </if>
+      <if test="dtfs != null">
+        DTFS = #{dtfs,jdbcType=VARCHAR},
+      </if>
+      <if test="dyjrd != null">
+        DYJRD = #{dyjrd,jdbcType=VARCHAR},
+      </if>
+      <if test="sydy != null">
+        SYDY = #{sydy,jdbcType=VARCHAR},
+      </if>
+      <if test="sgzxm != null">
+        SGZXM = #{sgzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="dtnr != null">
+        DTNR = #{dtnr,jdbcType=VARCHAR},
+      </if>
+      <if test="dtjt != null">
+        DTJT = #{dtjt,jdbcType=VARCHAR},
+      </if>
+      <if test="dtdd != null">
+        DTDD = #{dtdd,jdbcType=VARCHAR},
+      </if>
+      <if test="sgfa != null">
+        SGFA = #{sgfa,jdbcType=VARCHAR},
+      </if>
+      <if test="sjqtzyz != null">
+        SJQTZYZ = #{sjqtzyz,jdbcType=VARCHAR},
+      </if>
+      <if test="jhr != null">
+        JHR = #{jhr,jdbcType=VARCHAR},
+      </if>
+      <if test="jhrgw != null">
+        JHRGW = #{jhrgw,jdbcType=VARCHAR},
+      </if>
+      <if test="zyqx != null">
+        ZYQX = #{zyqx,jdbcType=VARCHAR},
+      </if>
+      <if test="whbs != null">
+        WHBS = #{whbs,jdbcType=VARCHAR},
+      </if>
+      <if test="aqcs != null">
+        AQCS = #{aqcs,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqk != null">
+        SSQK = #{ssqk,jdbcType=VARCHAR},
+      </if>
+      <if test="jhqk != null">
+        JHQK = #{jhqk,jdbcType=VARCHAR},
+      </if>
+      <if test="shzt != null">
+        SHZT = #{shzt,jdbcType=INTEGER},
+      </if>
+      <if test="jdmc != null">
+        JDMC = #{jdmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ryid != null">
+        RYID = #{ryid,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.ZyaqDtzinfo">
+    update zyaq_dtzinfo
+    set ZYZBH = #{zyzbh,jdbcType=VARCHAR},
+      SQRQ = #{sqrq,jdbcType=VARCHAR},
+      ZYZMC = #{zyzmc,jdbcType=VARCHAR},
+      JHX = #{jhx,jdbcType=INTEGER},
+      SQDW = #{sqdw,jdbcType=VARCHAR},
+      SQR = #{sqr,jdbcType=VARCHAR},
+      ZYDW = #{zydw,jdbcType=VARCHAR},
+      ZYFZR = #{zyfzr,jdbcType=VARCHAR},
+      SSAQJYR = #{ssaqjyr,jdbcType=VARCHAR},
+      BZR = #{bzr,jdbcType=VARCHAR},
+      DTFW = #{dtfw,jdbcType=VARCHAR},
+      DTFS = #{dtfs,jdbcType=VARCHAR},
+      DYJRD = #{dyjrd,jdbcType=VARCHAR},
+      SYDY = #{sydy,jdbcType=VARCHAR},
+      SGZXM = #{sgzxm,jdbcType=VARCHAR},
+      DTNR = #{dtnr,jdbcType=VARCHAR},
+      DTJT = #{dtjt,jdbcType=VARCHAR},
+      DTDD = #{dtdd,jdbcType=VARCHAR},
+      SGFA = #{sgfa,jdbcType=VARCHAR},
+      SJQTZYZ = #{sjqtzyz,jdbcType=VARCHAR},
+      JHR = #{jhr,jdbcType=VARCHAR},
+      JHRGW = #{jhrgw,jdbcType=VARCHAR},
+      ZYQX = #{zyqx,jdbcType=VARCHAR},
+      WHBS = #{whbs,jdbcType=VARCHAR},
+      AQCS = #{aqcs,jdbcType=VARCHAR},
+      SSQK = #{ssqk,jdbcType=VARCHAR},
+      JHQK = #{jhqk,jdbcType=VARCHAR},
+      SHZT = #{shzt,jdbcType=INTEGER},
+      JDMC = #{jdmc,jdbcType=VARCHAR},
+      RYID = #{ryid,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

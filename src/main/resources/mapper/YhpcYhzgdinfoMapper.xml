@@ -70,7 +70,26 @@
       order by id desc
       limit 1
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <select id="queryZgdinfoByDate" resultType="com.information.five.model.YhpcYhzgdinfo">
+
+    select <include refid="Base_Column_List"></include>
+    from yhpc_yhzgdinfo
+    fxrq LIKE concat(#{date},'%')
+    order by fxrq desc
+  </select>
+  <select id="queryZgdinfoByArea" resultType="java.util.Map">
+
+     SELECT COUNT(1) as count,yhszd as area FROM yhpc_yhzgdinfo
+     GROUP BY yhszd
+
+
+  </select>
+  <select id="queryZgadinfoByClass" resultType="java.util.Map">
+      SELECT COUNT(1) AS COUNT,yhlb AS class FROM yhpc_yhzgdinfo
+     GROUP BY yhlb
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from yhpc_yhzgdinfo
     where id = #{id,jdbcType=BIGINT}
   </delete>

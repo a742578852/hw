@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.YhpcJcbinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.YhpcJcbinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="BT" jdbcType="VARCHAR" property="bt" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="TBR" jdbcType="VARCHAR" property="tbr" />
+    <result column="ISTY" jdbcType="INTEGER" property="isty" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, BT, BZ, TBR, ISTY, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yhpc_jcbinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryAll" resultType="com.information.five.model.YhpcJcbinfo">
+      select <include refid="Base_Column_List"></include>
+      from yhpc_jcbinfo
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from yhpc_jcbinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.YhpcJcbinfo" useGeneratedKeys="true">
+    insert into yhpc_jcbinfo (BT, BZ, TBR, 
+      ISTY, created_at, updated_at
+      )
+    values (#{bt,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{tbr,jdbcType=VARCHAR}, 
+      #{isty,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.YhpcJcbinfo" useGeneratedKeys="true">
+    insert into yhpc_jcbinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bt != null">
+        BT,
+      </if>
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="tbr != null">
+        TBR,
+      </if>
+      <if test="isty != null">
+        ISTY,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bt != null">
+        #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="isty != null">
+        #{isty,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.YhpcJcbinfo">
+    update yhpc_jcbinfo
+    <set>
+      <if test="bt != null">
+        BT = #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null">
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        TBR = #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="isty != null">
+        ISTY = #{isty,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.YhpcJcbinfo">
+    update yhpc_jcbinfo
+    set BT = #{bt,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      TBR = #{tbr,jdbcType=VARCHAR},
+      ISTY = #{isty,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

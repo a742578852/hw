@@ -1,9 +1,12 @@
 package com.information.five.service;
 
 import com.information.five.model.FxbsFxsbinfo;
+import com.information.five.model.YhpcJcbinfo;
+import com.information.five.model.YhpcJcbxxinfo;
 import com.information.five.model.YhpcYhzgdinfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RiskService {
 
@@ -63,5 +66,41 @@ public interface RiskService {
     YhpcYhzgdinfo getDangerDetail(String db,Long id);
 
 
+    /**
+     * 获取安全检查记录
+     * @return
+     */
+    List getCheckrecord(String db);
 
+
+    /**
+     * 获取安全检查记录详情
+     * @return
+     */
+    Map getCheckRecordDetail(String db,Long id);
+
+
+    /**
+     * 获取检查表
+     * @return
+     */
+    List getCheckForm(String db);
+
+
+    /**
+     * 获取检查表详细项目
+     * @param db
+     * @param formId
+     * @return
+     */
+    List getCheckFormDetail(String db,Long formId);
+
+    /**
+     * 新增检查记录
+     * @param db
+     * @param yhpcJcbinfo
+     * @param yhpcJcbxxinfos
+     * @return
+     */
+    int addCheckRecord(String db, YhpcJcbinfo yhpcJcbinfo, List<YhpcJcbxxinfo> yhpcJcbxxinfos);
 }

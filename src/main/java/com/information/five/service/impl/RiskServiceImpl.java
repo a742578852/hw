@@ -1,16 +1,15 @@
 package com.information.five.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.information.five.mapper.FxbsFxsbinfoMapper;
-import com.information.five.mapper.YhpcYhzgdinfoMapper;
-import com.information.five.model.FxbsFxsbinfo;
-import com.information.five.model.YhpcYhzgdinfo;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.information.five.mapper.*;
+import com.information.five.model.*;
 import com.information.five.service.RiskService;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class RiskServiceImpl implements RiskService {
@@ -18,6 +17,16 @@ public class RiskServiceImpl implements RiskService {
     FxbsFxsbinfoMapper fxbsFxsbinfoMapper;
     @Autowired
     YhpcYhzgdinfoMapper yhpcYhzgdinfoMapper;
+
+    @Autowired
+    YhpcJcjlinfoMapper yhpcJcjlinfoMapper;
+    @Autowired
+    YhpcJcxminfoMapper yhpcJcxminfoMapper;
+    @Autowired
+    YhpcJcbinfoMapper yhpcJcbinfoMapper;
+
+    @Autowired
+    YhpcJcbxxinfoMapper yhpcJcbxxinfoMapper;
 
     @Override
     @DS("#db")
@@ -77,6 +86,60 @@ public class RiskServiceImpl implements RiskService {
 
 
         return yhpcYhzgdinfoMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    @DS("#db")
+    public List getCheckrecord(String db) {
+
+
+        return yhpcJcjlinfoMapper.queryAll();
+    }
+
+    @Override
+    @DS("#db")
+    public Map getCheckRecordDetail(String db, Long id) {
+        //获取检查记录
+        YhpcJcjlinfo yhpcJcjlinfo = yhpcJcjlinfoMapper.selectByPrimaryKey(id);
+        //获取检查项
+        List<YhpcJcxminfo> yhpcJcxminfos = yhpcJcxminfoMapper.getJcxmByjlid(id);
+        Map map = new HashMap();
+        map.put("yhpcJcjlinfo",yhpcJcjlinfo);
+        map.put("yhpcJcxminfos",yhpcJcxminfos);
+        return map;
+    }
+
+    @Override
+    @DS("#db")
+    public List getCheckForm(String db) {
+
+
+        return yhpcJcbinfoMapper.queryAll();
+    }
+
+    @Override
+    @DS("#db")
+    public List getCheckFormDetail(String db, Long formId) {
+
+        return yhpcJcbxxinfoMapper.queryJcbxxByJcbid(formId);
+    }
+
+    @Override
+    @DS("#db")
+    public int addCheckRecord(String db, YhpcJcbinfo yhpcJcbinfo, List<YhpcJcbxxinfo> yhpcJcbxxinfos) {
+        yhpcJcbinfoMapper.insert(yhpcJcbinfo);
+        List addList = new ArrayList();
+        ObjectMapper objectMapper = new ObjectMapper();
+        for (YhpcJcbxxinfo yhpcJcbxxinfo:yhpcJcbxxinfos){
+
+            YhpcJcbxxinfo yhpcJcbxxinfo1 = objectMapper.convertValue(yhpcJcbxxinfo,YhpcJcbxxinfo.class);
+            yhpcJcbxxinfo1.setJcbid(yhpcJcbinfo.getId());
+            yhpcJcbxxinfo1.setCreatedAt(new Date());
+            addList.add(yhpcJcbxxinfo1);
+        }
+
+        yhpcJcbxxinfoMapper.insertYhpcJcbxxinfo(addList);
+        return 1;
     }
 
 

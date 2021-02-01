@@ -105,7 +105,7 @@ public class JudgeServiceImpl implements JudgeService {
         FxypCjypjlinfo fxypCjypjlinfo = new FxypCjypjlinfo();
         //查询当前时间当前车间的基本信息记录
         List<FxypBzjinfo> fxypBzjinfos = fxypBzjinfoMapper.queryBzjinfoByDadeAndCj(date, cj);
-        if (null == fxypBzjinfos) {
+        if (fxypBzjinfos.size() == 0) {
             return new Result(204, true, date + cj + "没有进行风险研判");
         }
 
@@ -315,10 +315,10 @@ public class JudgeServiceImpl implements JudgeService {
             if (fxypCjypjlinfo.getSsc()!= null && fxypCjypjlinfo.getSsc().equals("是")){
                 ssc = "是";
             }
-            if (fxypCjypjlinfo.getTczt().equals("是")){
+            if (fxypCjypjlinfo.getTczt() !=null && fxypCjypjlinfo.getTczt().equals("是")){
                 tczt = "是";
             }
-            if (fxypCjypjlinfo.getAqzt().equals("是")){
+            if (fxypCjypjlinfo.getAqzt() != null && fxypCjypjlinfo.getAqzt().equals("是")){
                 aqzt = "是";
             }
             if (bz.equals("")){

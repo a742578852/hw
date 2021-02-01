@@ -1,0 +1,25 @@
+package com.information.five.mapper;
+
+import com.information.five.model.ZyaqLsydzinfo;
+
+import java.util.List;
+
+public interface ZyaqLsydzinfoMapper {
+    int deleteByPrimaryKey(Long id);
+
+    int insert(ZyaqLsydzinfo record);
+
+    int insertSelective(ZyaqLsydzinfo record);
+
+    ZyaqLsydzinfo selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(ZyaqLsydzinfo record);
+
+    int updateByPrimaryKey(ZyaqLsydzinfo record);
+
+    /**
+     * 获取临时用电列表
+     * @return
+     */
+    List<ZyaqLsydzinfo> queryAll();
+}

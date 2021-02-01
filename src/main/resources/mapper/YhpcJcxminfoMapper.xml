@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.YhpcJcxminfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.YhpcJcxminfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="JCJLID" jdbcType="BIGINT" property="jcjlid" />
+    <result column="JCXM" jdbcType="VARCHAR" property="jcxm" />
+    <result column="JCBZ" jdbcType="VARCHAR" property="jcbz" />
+    <result column="JCJL" jdbcType="VARCHAR" property="jcjl" />
+    <result column="MS" jdbcType="VARCHAR" property="ms" />
+    <result column="ZGFS" jdbcType="VARCHAR" property="zgfs" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, JCJLID, JCXM, JCBZ, JCJL, MS, ZGFS, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yhpc_jcxminfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="getJcxmByjlid" resultType="com.information.five.model.YhpcJcxminfo">
+
+      select <include refid="Base_Column_List"></include>
+      from yhpc_jcxminfo
+      where jcjlid = #{jcjlid}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from yhpc_jcxminfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.YhpcJcxminfo" useGeneratedKeys="true">
+    insert into yhpc_jcxminfo (JCJLID, JCXM, JCBZ, 
+      JCJL, MS, ZGFS, created_at, 
+      updated_at)
+    values (#{jcjlid,jdbcType=BIGINT}, #{jcxm,jdbcType=VARCHAR}, #{jcbz,jdbcType=VARCHAR}, 
+      #{jcjl,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{zgfs,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.YhpcJcxminfo" useGeneratedKeys="true">
+    insert into yhpc_jcxminfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jcjlid != null">
+        JCJLID,
+      </if>
+      <if test="jcxm != null">
+        JCXM,
+      </if>
+      <if test="jcbz != null">
+        JCBZ,
+      </if>
+      <if test="jcjl != null">
+        JCJL,
+      </if>
+      <if test="ms != null">
+        MS,
+      </if>
+      <if test="zgfs != null">
+        ZGFS,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jcjlid != null">
+        #{jcjlid,jdbcType=BIGINT},
+      </if>
+      <if test="jcxm != null">
+        #{jcxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jcbz != null">
+        #{jcbz,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjl != null">
+        #{jcjl,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null">
+        #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="zgfs != null">
+        #{zgfs,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.YhpcJcxminfo">
+    update yhpc_jcxminfo
+    <set>
+      <if test="jcjlid != null">
+        JCJLID = #{jcjlid,jdbcType=BIGINT},
+      </if>
+      <if test="jcxm != null">
+        JCXM = #{jcxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jcbz != null">
+        JCBZ = #{jcbz,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjl != null">
+        JCJL = #{jcjl,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null">
+        MS = #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="zgfs != null">
+        ZGFS = #{zgfs,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.YhpcJcxminfo">
+    update yhpc_jcxminfo
+    set JCJLID = #{jcjlid,jdbcType=BIGINT},
+      JCXM = #{jcxm,jdbcType=VARCHAR},
+      JCBZ = #{jcbz,jdbcType=VARCHAR},
+      JCJL = #{jcjl,jdbcType=VARCHAR},
+      MS = #{ms,jdbcType=VARCHAR},
+      ZGFS = #{zgfs,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

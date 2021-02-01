@@ -46,7 +46,7 @@
     <select id="queryBzinfoByDate" resultType="com.information.five.model.FxypBzjinfo">
       select <include refid="Base_Column_List"></include>
       from fxyp_bzjinfo
-      where tbrq like concat(#{date},'%')
+      where created_at like concat(#{date},'%')
     </select>
   <select id="queryBzjinfoByGsid" resultType="com.information.five.model.FxypBzjinfo">
     select <include refid="Base_Column_List"></include>

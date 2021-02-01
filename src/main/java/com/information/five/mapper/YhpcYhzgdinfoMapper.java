@@ -3,6 +3,7 @@ package com.information.five.mapper;
 import com.information.five.model.YhpcYhzgdinfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface YhpcYhzgdinfoMapper {
     int deleteByPrimaryKey(Long id);
@@ -29,4 +30,23 @@ public interface YhpcYhzgdinfoMapper {
      * @return
      */
     YhpcYhzgdinfo queryLatYhzg();
+
+    /**
+     * 根据日期查询隐患信息
+     * @param date
+     * @return
+     */
+    List<YhpcYhzgdinfo> queryZgdinfoByDate(String date);
+
+    /**
+     * 根据区域查询隐患统计
+     * @return
+     */
+    List<Map> queryZgdinfoByArea();
+
+    /**
+     * 根据类别获取隐患统计
+     * @return
+     */
+    List<Map> queryZgadinfoByClass();
 }

@@ -156,7 +156,7 @@ public class JudgeController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gsName", value = "公司名", dataType = "String", required = true),
             @ApiImplicitParam(name = "sbr", value = "上报人", dataType = "String", required = true),
-            @ApiImplicitParam(name = "date", value = "上报时间", dataType = "String", required = true)
+                @ApiImplicitParam(name = "date", value = "上报时间", dataType = "String", required = true)
     })
     public Result mergeGsinfo(@ApiIgnore HttpServletRequest request, String gsName, String sbr, String date) {
         String db = (String) request.getAttribute("db");
@@ -167,7 +167,7 @@ public class JudgeController {
     }
 
     @PostMapping("getAllGsinfo")
-    @ApiOperation("获取所有车间记录")
+    @ApiOperation("获取所有公司记录")
     public Result getAllGsinfo(@ApiIgnore HttpServletRequest request) {
         String db = (String) request.getAttribute("db");
         Long id = Long.parseLong(request.getAttribute("id").toString());
