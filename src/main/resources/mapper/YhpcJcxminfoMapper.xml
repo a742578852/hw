@@ -94,7 +94,18 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.YhpcJcxminfo">
+    <insert id="insertList">
+
+      insert into yhpc_jcxminfo (JCJLID, JCXM, JCBZ, JCJL, MS, ZGFS, created_at)
+      values
+      <foreach collection="list" item="jc" index="index" separator=",">
+        (
+        #{jc.jcjlid},#{jc.jcxm},#{jc.jcbz},#{jc.jcjl},#{jc.ms},#{jc.zgfs},#{jc.createdAt}
+        )
+      </foreach>
+
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.YhpcJcxminfo">
     update yhpc_jcxminfo
     <set>
       <if test="jcjlid != null">

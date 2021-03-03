@@ -17,7 +17,7 @@ public interface StacService {
      * 根据区域获取统计信息
      * @return
      */
-    List getDangerByArea(String db);
+    Map getDangerByArea(String db);
 
     /**
      * 根据分类获取隐患统计

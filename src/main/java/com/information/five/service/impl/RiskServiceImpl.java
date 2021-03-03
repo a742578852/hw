@@ -9,6 +9,8 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -126,19 +128,31 @@ public class RiskServiceImpl implements RiskService {
 
     @Override
     @DS("#db")
-    public int addCheckRecord(String db, YhpcJcbinfo yhpcJcbinfo, List<YhpcJcbxxinfo> yhpcJcbxxinfos) {
-        yhpcJcbinfoMapper.insert(yhpcJcbinfo);
+    public int addCheckRecord(String db, YhpcJcjlinfo yhpcJcjlinfo, List<YhpcJcxminfo> yhpcJcxminfos) {
+        //检查id生成
+        YhpcJcjlinfo yhpcJcjlinfo1 = yhpcJcjlinfoMapper.queryLast();
+        int parm =  Integer.parseInt(yhpcJcjlinfo1.getJcdh().substring(yhpcJcjlinfo1.getJcdh().lastIndexOf("-")+1));
+        parm += 1;
+        DecimalFormat df = new DecimalFormat("0000");
+        String str2 = df.format(parm);
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        String id = "JCDH-"+simpleDateFormat.format(date)+"-"+str2;
+        yhpcJcjlinfo.setJcdh(id);
+        yhpcJcjlinfoMapper.insertSelective(yhpcJcjlinfo);
         List addList = new ArrayList();
         ObjectMapper objectMapper = new ObjectMapper();
-        for (YhpcJcbxxinfo yhpcJcbxxinfo:yhpcJcbxxinfos){
+        for (int i = 0;i<yhpcJcxminfos.size();i++){
 
-            YhpcJcbxxinfo yhpcJcbxxinfo1 = objectMapper.convertValue(yhpcJcbxxinfo,YhpcJcbxxinfo.class);
-            yhpcJcbxxinfo1.setJcbid(yhpcJcbinfo.getId());
-            yhpcJcbxxinfo1.setCreatedAt(new Date());
-            addList.add(yhpcJcbxxinfo1);
+            YhpcJcxminfo yhpcJcxminfo1 = objectMapper.convertValue(yhpcJcxminfos.get(i),YhpcJcxminfo.class);
+            yhpcJcxminfo1.setJcbz(yhpcJcxminfo1.getJcnr());
+            yhpcJcxminfo1.setJcjlid(yhpcJcjlinfo.getId());
+            yhpcJcxminfo1.setCreatedAt(new Date());
+            addList.add(yhpcJcxminfo1);
         }
 
-        yhpcJcbxxinfoMapper.insertYhpcJcbxxinfo(addList);
+        yhpcJcxminfoMapper.insertList(addList);
         return 1;
     }
 

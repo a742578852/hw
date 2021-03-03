@@ -1,9 +1,6 @@
 package com.information.five.service;
 
-import com.information.five.model.FxbsFxsbinfo;
-import com.information.five.model.YhpcJcbinfo;
-import com.information.five.model.YhpcJcbxxinfo;
-import com.information.five.model.YhpcYhzgdinfo;
+import com.information.five.model.*;
 
 import java.util.List;
 import java.util.Map;
@@ -102,5 +99,5 @@ public interface RiskService {
      * @param yhpcJcbxxinfos
      * @return
      */
-    int addCheckRecord(String db, YhpcJcbinfo yhpcJcbinfo, List<YhpcJcbxxinfo> yhpcJcbxxinfos);
+    int addCheckRecord(String db, YhpcJcjlinfo yhpcJcjlinfo, List<YhpcJcxminfo> yhpcJcxminfos);
 }

@@ -23,4 +23,11 @@ public interface YhpcJcxminfoMapper {
      * @return
      */
     List<YhpcJcxminfo> getJcxmByjlid(Long jcjlid);
+
+    /**
+     * for添加
+     * @param list
+     * @return
+     */
+    int insertList(List<YhpcJcxminfo> list);
 }

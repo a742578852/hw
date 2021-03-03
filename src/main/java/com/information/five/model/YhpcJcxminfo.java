@@ -14,6 +14,10 @@ public class YhpcJcxminfo implements Serializable {
 
     private Long jcjlid;
 
+    private Long jcbid;
+
+    private String jcnr;
+
     /**
      * 检查项目
      */
@@ -47,6 +51,22 @@ public class YhpcJcxminfo implements Serializable {
     private Date updatedAt;
 
     private static final long serialVersionUID = 1L;
+
+    public String getJcnr() {
+        return jcnr;
+    }
+
+    public void setJcnr(String jcnr) {
+        this.jcnr = jcnr;
+    }
+
+    public Long getJcbid() {
+        return jcbid;
+    }
+
+    public void setJcbid(Long jcbid) {
+        this.jcbid = jcbid;
+    }
 
     public Long getId() {
         return id;

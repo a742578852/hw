@@ -22,4 +22,10 @@ public interface YhpcJcjlinfoMapper {
      * @return
      */
     List<YhpcJcjlinfo> queryAll();
+
+    /**
+     * 查询最后一条
+     * @return
+     */
+    YhpcJcjlinfo queryLast();
 }

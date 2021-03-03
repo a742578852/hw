@@ -60,7 +60,7 @@
     <select id="queryYhzgdinfoByRiskid" resultType="com.information.five.model.YhpcYhzgdinfo">
         select <include refid="Base_Column_List"/> from yhpc_yhzgdinfo
         where 1=1
-        <if test="riskid != null">
+        <if test="riskid != null and riskid != ''">
           and FXSBID = #{riskid}
         </if>
         order by created_at desc
@@ -74,7 +74,7 @@
 
     select <include refid="Base_Column_List"></include>
     from yhpc_yhzgdinfo
-    fxrq LIKE concat(#{date},'%')
+    where fxrq LIKE concat(#{date},'%')
     order by fxrq desc
   </select>
   <select id="queryZgdinfoByArea" resultType="java.util.Map">
@@ -85,8 +85,8 @@
 
   </select>
   <select id="queryZgadinfoByClass" resultType="java.util.Map">
-      SELECT COUNT(1) AS COUNT,yhlb AS class FROM yhpc_yhzgdinfo
-     GROUP BY yhlb
+      SELECT COUNT(1) AS data,ifnull(yhlb,'其他') AS name FROM yhpc_yhzgdinfo
+        GROUP BY yhlb
 
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

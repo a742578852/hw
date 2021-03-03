@@ -74,7 +74,7 @@ public class LoginController {
         String db = DbUtil.getDb(address);
         //判断端口
         if (db == null){
-            return new Result(201,true,"连接失败,地址错误");
+            return new Result(202,true,"连接失败,地址错误");
         }
         return new Result(200,true,"连接成功");
 

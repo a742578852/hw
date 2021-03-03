@@ -1,6 +1,7 @@
 package com.information.five.mapper;
 
 import com.information.five.model.YhpcJcbinfo;
+import com.information.five.model.YhpcJcbxxinfo;
 
 import java.util.List;
 
@@ -22,4 +23,10 @@ public interface YhpcJcbinfoMapper {
      * @return
      */
     List<YhpcJcbinfo> queryAll();
+
+    /**
+     * 获取最后一条
+     * @return
+     */
+    YhpcJcbinfo queryYhpcLast();
 }

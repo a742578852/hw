@@ -95,7 +95,7 @@ public class RiskController {
             @ApiImplicitParam(name = "file", value = "附件", dataType = "file", required = false)
     })
     public Result riskReport(Long riskId, String fxwz, String fxms, String fxys, String fxrxm, String fxrq,
-                             @RequestParam("file") MultipartFile file, @ApiIgnore HttpServletRequest request) throws IOException {
+                              @ApiIgnore HttpServletRequest request) throws IOException {
         String db = (String) request.getAttribute("db");
         Long id = Long.parseLong(request.getAttribute("id").toString());
         SystemAdmin systemAdmin = systemAdminService.getSystemAdminById(id, db);
@@ -109,39 +109,39 @@ public class RiskController {
         fxbsFxsbinfo.setFxrq(fxrq);
         fxbsFxsbinfo.setCreatedAt(new Date());
 
-        if (!file.isEmpty()) {
-            //附件上传
-            //文件夹地址
-            String prefix = DicConfig.FILEPATH;
-            String add = DicConfig.IMGPATH + simpleDateFormat.format(new Date()) + "/";
-            prefix = prefix + add;
-            //文件后缀
-            String suffix = file.getOriginalFilename();
+//        if (!file.isEmpty()) {
+//            //附件上传
+//            //文件夹地址
+//            String prefix = DicConfig.FILEPATH;
+//            String add = DicConfig.IMGPATH + simpleDateFormat.format(new Date()) + "/";
+//            prefix = prefix + add;
+//            //文件后缀
+//            String suffix = file.getOriginalFilename();
+//
+//            try {
+//                suffix = suffix.substring(file.getOriginalFilename().lastIndexOf("."));
+//                //文件名
+//                String fileName = StringUtils.getUuid() + suffix;
+//                //创建文件夹
+//                File dir = new File(prefix);
+//                if (!dir.exists()) {
+//                    dir.mkdirs();
+//                }
+//                //4.创建这个新文件
+//                File newFile = new File(prefix + fileName);
+//
+//                //5.复制操作
+//
+//                file.transferTo(newFile);
+//                //协议 :// ip地址 ：端口号 / 文件目录(/images/2020/03/15/xxx.jpg)
+//                String savePath = add + fileName;
+//                fxbsFxsbinfo.setFj(savePath);
+//            }catch (Exception e){
+//
+//            }
 
-            try {
-                suffix = suffix.substring(file.getOriginalFilename().lastIndexOf("."));
-                //文件名
-                String fileName = StringUtils.getUuid() + suffix;
-                //创建文件夹
-                File dir = new File(prefix);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                //4.创建这个新文件
-                File newFile = new File(prefix + fileName);
 
-                //5.复制操作
-
-                file.transferTo(newFile);
-                //协议 :// ip地址 ：端口号 / 文件目录(/images/2020/03/15/xxx.jpg)
-                String savePath = add + fileName;
-                fxbsFxsbinfo.setFj(savePath);
-            }catch (Exception e){
-
-            }
-
-
-        }
+        //}
 
         riskService.addFxsbInfo(fxbsFxsbinfo, db);
         return new Result(200, true, "上报成功");
@@ -247,7 +247,7 @@ public class RiskController {
     public Result getCheckFormDetail(HttpServletRequest request,Long formId){
         String db = (String) request.getAttribute("db");
 
-        return new Result(200,true,"获取成功",riskService.getCheckRecordDetail(db,formId));
+        return new Result(200,true,"获取成功",riskService.getCheckFormDetail(db,formId));
 
     }
 
@@ -258,11 +258,12 @@ public class RiskController {
     public Result addCheckRecord(@RequestBody Map<String, Object> map,HttpServletRequest request){
         String db = (String) request.getAttribute("db");
         ObjectMapper objectMapper = new ObjectMapper();
-        YhpcJcbinfo yhpcJcbinfo = objectMapper.convertValue(map.get("jcb"),YhpcJcbinfo.class);
+        YhpcJcjlinfo yhpcJcjlinfo = objectMapper.convertValue(map.get("jcb"),YhpcJcjlinfo.class);
 
-        List<YhpcJcbxxinfo> yhpcJcbxxinfos = JSON.parseObject(JSON.toJSONString(map.get("jcbcc")),List.class);
 
-        riskService.addCheckRecord(db,yhpcJcbinfo,yhpcJcbxxinfos);
+        List<YhpcJcxminfo> yhpcJcxminfos = JSON.parseObject(JSON.toJSONString(map.get("jcbcc")),List.class);
+
+        riskService.addCheckRecord(db,yhpcJcjlinfo,yhpcJcxminfos);
         return new Result(200,true,"添加成功");
     }
 

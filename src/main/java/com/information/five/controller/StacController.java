@@ -14,6 +14,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/stac")
@@ -54,8 +55,8 @@ public class StacController {
         String db = (String) request.getAttribute("db");
         Long id = Long.parseLong(request.getAttribute("id").toString());
         SystemAdmin systemAdmin = systemAdminService.getSystemAdminById(id, db);
-
-        return new Result(200,true,"获取成功",stacService.getDangerByClass(db));
+        List list = stacService.getDangerByClass(db);
+        return new Result(200,true,"获取成功",list);
     }
 
 }

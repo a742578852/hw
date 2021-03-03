@@ -3,6 +3,7 @@ package com.information.five.controller;
 import com.information.five.mapper.SystemAdminMapper;
 import com.information.five.model.SystemAdmin;
 import com.information.five.service.SystemAdminService;
+import com.information.five.util.IpUtil;
 import com.information.five.util.Result;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @RestController
 @Api(tags = "用户信息相关")
@@ -41,6 +43,9 @@ public class UserController {
         Long id = Long.parseLong(request.getAttribute("id").toString());
         SystemAdmin systemAdmin = systemAdminService.getSystemAdminById(id, db);
         systemAdmin.setHits(systemAdmin.getHits()+1);
+        systemAdmin.setLastLoginIp(IpUtil.getIpAdrress(request));
+        systemAdmin.setLastLoginTime(new Date());
+
         systemAdminService.updateSystem(systemAdmin,db);
 
 

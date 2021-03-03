@@ -20,7 +20,8 @@ public class StacServiceImpl implements StacService {
     @DS("#db")
     public Map getDangerStacByComrate(String db, String year) throws ParseException {
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
         //根据选择日期查询所有隐患
         List<YhpcYhzgdinfo> yhpcYhzgdinfos = yhpcYhzgdinfoMapper.queryZgdinfoByDate(year);
         //发现问题数量
@@ -33,7 +34,8 @@ public class StacServiceImpl implements StacService {
         int noCompleteCount = 0;
 
         //当前日期
-        Date nowDate = new Date();
+
+        String nowDate = s.format(new Date());
 
         for (YhpcYhzgdinfo yhpcYhzgdinfo:yhpcYhzgdinfos){
             //整改期限
@@ -41,19 +43,21 @@ public class StacServiceImpl implements StacService {
             //整改完成日期
             String zgwcrq = yhpcYhzgdinfo.getZgwcrq();
 
-            if (zgwcrq == null || zgwcrq.equals("")){
-                completeingCount++;
+            if ((zgwcrq == null || zgwcrq.equals("")) && !(yhpcYhzgdinfo.getJdmc().equals("流程结束"))){
+
                 //判断是否按期
-                if ((sdf.parse(zgqx)).before(nowDate)){
+                if ((sdf.parse(zgqx)).before(sdf.parse(nowDate)) ){
                     noCompleteCount++;
+                }else {
+                    completeingCount++;
                 }
             }else {
                 //判断完成日期是否在期限内
-                if ((sdf.parse(zgqx)).before(sdf.parse(zgwcrq))){
-                    noCompleteCount++;
-                }else {
+//                if ((sdf.parse(zgqx)).before(sdf.parse(zgwcrq))){
+//                    noCompleteCount++;
+//                }else {
                     completeCount++;
-                }
+//                }
 
             }
 
@@ -72,10 +76,30 @@ public class StacServiceImpl implements StacService {
 
     @Override
     @DS("#db")
-    public List<Map> getDangerByArea(String db) {
+    public Map getDangerByArea(String db) {
 
         List<Map> maps = yhpcYhzgdinfoMapper.queryZgdinfoByArea();
-        return maps;
+
+        List areaList = new ArrayList();
+
+        List countList = new ArrayList();
+
+        for (Map map:maps){
+            areaList.add(map.get("area"));
+            countList.add(map.get("count"));
+        }
+        Map map = new HashMap();
+        map.put("categories",areaList);
+
+        Map map1 = new HashMap();
+        map1.put("name","数量");
+        map1.put("data",countList);
+        List serList = new ArrayList();
+        serList.add(map1);
+        map.put("series",serList);
+
+
+        return map;
     }
 
     @Override
