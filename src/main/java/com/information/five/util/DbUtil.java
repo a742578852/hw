@@ -11,7 +11,7 @@ public class DbUtil {
     //-------------------------------------------
     final static String TESTAD = "127.0.0.1:8080";//测试库地址
 
-    final static String TESTDB = "test1";//测试Service
+    final static String TESTDB = "test";//测试Service
 
     //-------------------------------------------------
     final static String HJAD = "47.114.110.211:8021";//恒基
@@ -52,6 +52,7 @@ public class DbUtil {
         case XSAD:
             db = XSDB;
             break;
+
     }
 
     return db;

@@ -23,4 +23,10 @@ public interface ZyaqGczinfoMapper {
      */
     List<ZyaqGczinfo> queryAll();
 
+    /**
+     * 获取登高最后一条
+     * @return
+     */
+    ZyaqGczinfo queryLast();
+
 }

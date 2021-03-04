@@ -131,7 +131,13 @@ public class RiskServiceImpl implements RiskService {
     public int addCheckRecord(String db, YhpcJcjlinfo yhpcJcjlinfo, List<YhpcJcxminfo> yhpcJcxminfos) {
         //检查id生成
         YhpcJcjlinfo yhpcJcjlinfo1 = yhpcJcjlinfoMapper.queryLast();
-        int parm =  Integer.parseInt(yhpcJcjlinfo1.getJcdh().substring(yhpcJcjlinfo1.getJcdh().lastIndexOf("-")+1));
+        int parm;
+        if (yhpcJcjlinfo1 == null){
+            parm = 1;
+        }else {
+            parm =  Integer.parseInt(yhpcJcjlinfo1.getJcdh().substring(yhpcJcjlinfo1.getJcdh().lastIndexOf("-")+1));
+        }
+
         parm += 1;
         DecimalFormat df = new DecimalFormat("0000");
         String str2 = df.format(parm);

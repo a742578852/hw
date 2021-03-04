@@ -22,4 +22,10 @@ public interface ZyaqDhzinfoMapper {
      * @return
      */
     List<ZyaqDhzinfo> queryAll();
+
+    /**
+     * 获取最后一张动火
+     * @return
+     */
+    ZyaqDhzinfo queryLastDh();
 }

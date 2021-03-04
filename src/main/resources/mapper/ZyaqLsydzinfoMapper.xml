@@ -53,6 +53,14 @@
       order by sqrq desc
 
     </select>
+    <select id="queryLast" resultType="com.information.five.model.ZyaqLsydzinfo">
+
+      select <include refid="Base_Column_List"></include>
+      from zyaq_lsydzinfo
+      order by id desc
+      limit 1
+
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from zyaq_lsydzinfo
     where id = #{id,jdbcType=BIGINT}

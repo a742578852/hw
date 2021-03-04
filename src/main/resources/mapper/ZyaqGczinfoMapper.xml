@@ -49,6 +49,12 @@
       from zyaq_gczinfo
       order by created_at desc
     </select>
+    <select id="queryLast" resultType="com.information.five.model.ZyaqGczinfo">
+      select <include refid="Base_Column_List"></include>
+      from zyaq_gczinfo
+      order by id desc
+      limit 1
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from zyaq_gczinfo
     where id = #{id,jdbcType=BIGINT}

@@ -22,4 +22,10 @@ public interface ZyaqLsydzinfoMapper {
      * @return
      */
     List<ZyaqLsydzinfo> queryAll();
+
+    /**
+     * 临时用电最后一条
+     * @return
+     */
+    ZyaqLsydzinfo queryLast();
 }

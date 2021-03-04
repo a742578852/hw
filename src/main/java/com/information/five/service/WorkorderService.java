@@ -24,6 +24,14 @@ public interface WorkorderService {
      */
     ZyaqDhzinfo getFireorderDetail(String db, Long orderId);
 
+    /**
+     * 动火票添加修改
+     * @param db
+     * @param zyaqDhzinfo
+     * @return
+     */
+    int changeFireOrder(String db,ZyaqDhzinfo zyaqDhzinfo);
+
     //----------------------------------------------------------------------
 
     /**
@@ -40,6 +48,14 @@ public interface WorkorderService {
      * @return
      */
     ZyaqGczinfo getHighorderDetail(String db, Long orderid);
+
+    /**
+     * 修改添加高处票
+     * @param db
+     * @param zyaqGczinfo
+     * @return
+     */
+    int changeHighOrder(String db,ZyaqGczinfo zyaqGczinfo);
 
     //--------------------------------------------------------------
 
@@ -58,6 +74,14 @@ public interface WorkorderService {
      */
     ZyaqSxkjzinfo getSpaceorderDetail(String db, Long orderId);
 
+    /**
+     * 添加修改受限空间票
+     * @param db
+     * @param zyaqSxkjzinfo
+     * @return
+     */
+    int changeSpaceOrder(String db,ZyaqSxkjzinfo zyaqSxkjzinfo);
+
     //------------------------------------------------------------------
 
     /**
@@ -74,6 +98,14 @@ public interface WorkorderService {
      * @return
      */
     ZyaqDzzinfo getHoistingorderDetail(String db,Long orderId);
+
+    /**
+     * 修改添加吊装作业票
+     * @param db
+     * @param zyaqDzzinfo
+     * @return
+     */
+    int changeHoistingOrder(String db,ZyaqDzzinfo zyaqDzzinfo);
 
     //------------------------------------------------------------------------
 
@@ -92,6 +124,14 @@ public interface WorkorderService {
      */
     ZyaqLsydzinfo getelectricorderDetail(String db, Long orderId);
 
+    /**
+     * 修改添加临时用电
+     * @param db
+     * @param zyaqLsydzinfo
+     * @return
+     */
+    int changeElectricOrder(String db,ZyaqLsydzinfo zyaqLsydzinfo);
+
     //-----------------------------------------------------------------------
 
     /**
@@ -109,6 +149,14 @@ public interface WorkorderService {
      */
     ZyaqDtzinfo getSoilorderDetail(String db,Long orderId);
 
+    /**
+     * 修改添加动土票
+     * @param db
+     * @param zyaqDtzinfo
+     * @return
+     */
+    int changeSoilOrder(String db,ZyaqDtzinfo zyaqDtzinfo);
+
     //--------------------------------------------------------------------
     //获取盲板抽堵列表
     List getWallorderList(String db);
@@ -121,6 +169,14 @@ public interface WorkorderService {
      * @return
      */
     ZyaqMbcdzinfo getWallorderDetail(String db,Long orderId);
+
+    /**
+     * 盲板抽堵修改添加
+     * @param db
+     * @param zyaqMbcdzinfo
+     * @return
+     */
+    int changeWallOrder(String db,ZyaqMbcdzinfo zyaqMbcdzinfo);
 
     //------------------------------------------------------------------
 
@@ -138,6 +194,13 @@ public interface WorkorderService {
      * @return
      */
     ZyaqDlzinfo getBreakorderDetail(String db,Long orderid);
+
+    /**
+     * 修改添加作业票
+     * @param db
+     * @param zyaqDlzinfo
+     */
+    int changeBreakOrder(String db,ZyaqDlzinfo zyaqDlzinfo);
 
 
 }

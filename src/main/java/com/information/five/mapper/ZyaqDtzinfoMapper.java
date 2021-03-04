@@ -22,4 +22,10 @@ public interface ZyaqDtzinfoMapper {
      * @return
      */
     List<ZyaqDtzinfo> queryAll();
+
+    /**
+     * 查询最后
+     * @return
+     */
+    ZyaqDtzinfo queryLast();
 }

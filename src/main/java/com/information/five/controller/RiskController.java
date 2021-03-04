@@ -156,7 +156,7 @@ public class RiskController {
             @ApiImplicitParam(name = "yhpcYhzgdinfo", value = "隐患整改单对象", dataType = "yhpcYhzgdinfo", required = true),
             @ApiImplicitParam(name = "file", value = "附件", dataType = "file", required = true)
     })
-    public Result fillDanger(YhpcYhzgdinfo yhpcYhzgdinfo, @ApiIgnore HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+    public Result fillDanger(YhpcYhzgdinfo yhpcYhzgdinfo, @ApiIgnore HttpServletRequest request) {
         String db = (String) request.getAttribute("db");
 
         //如果整改单号为空
@@ -185,35 +185,35 @@ public class RiskController {
         }
 
 
-        //附件上传
-        //文件夹地址
-        String prefix = DicConfig.FILEPATH;
-        String add = DicConfig.IMGPATH + simpleDateFormat.format(new Date()) + "/";
-        prefix = prefix + add;
-        //文件后缀
-        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        //文件名
-        String fileName = StringUtils.getUuid() + suffix;
-        //创建文件夹
-        File dir = new File(prefix);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        //4.创建这个新文件
-        File newFile = new File(prefix + fileName);
-
-        //5.复制操作
-        try {
-            file.transferTo(newFile);
-            //协议 :// ip地址 ：端口号 / 文件目录(/images/2020/03/15/xxx.jpg)
-            String savePath = add + fileName;
-            yhpcYhzgdinfo.setYhzp(savePath);
+//        //附件上传
+//        //文件夹地址
+//        String prefix = DicConfig.FILEPATH;
+//        String add = DicConfig.IMGPATH + simpleDateFormat.format(new Date()) + "/";
+//        prefix = prefix + add;
+//        //文件后缀
+//        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+//        //文件名
+//        String fileName = StringUtils.getUuid() + suffix;
+//        //创建文件夹
+//        File dir = new File(prefix);
+//        if (!dir.exists()) {
+//            dir.mkdirs();
+//        }
+//        //4.创建这个新文件
+//        File newFile = new File(prefix + fileName);
+//
+//        //5.复制操作
+//        try {
+//            file.transferTo(newFile);
+//            //协议 :// ip地址 ：端口号 / 文件目录(/images/2020/03/15/xxx.jpg)
+//            String savePath = add + fileName;
+//            yhpcYhzgdinfo.setYhzp(savePath);
 
             riskService.addYhzgdinfo(db, yhpcYhzgdinfo);
             return new Result(200, true, "操作成功");
-        } catch (IOException e) {
-            return new Result(204, true, "操作失败");
-        }
+//        } catch (IOException e) {
+//            return new Result(204, true, "操作失败");
+//        }
 
     }
 
