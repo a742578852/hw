@@ -26,8 +26,33 @@ public class DbUtil {
     final static String HXDB = "hx";
 
     //-----------------------------------------------
-    final static String XSAD = "47.114.110.211:8023";//
+    final static String XSAD = "47.114.110.211:8023";//旭升
     final static String XSDB = "xs";
+
+    //-----------------------------------------------
+    final static String AJAD = "47.114.110.211:8025";//艾津
+    final static String AJDB = "aj";
+
+    //-----------------------------------------------
+    final static String FYAD = "47.114.110.211:8012";//丰源
+    final static String FYDB = "fy";
+
+    //-----------------------------------------------
+    final static String JMAD = "47.114.110.211:8022";//金马
+    final static String JMDB = "jm";
+
+    //-----------------------------------------------
+    final static String JYAD = "47.114.110.211:8009";//九阳
+    final static String JYDB = "jy";
+
+    //-----------------------------------------------
+    final static String TYAD = "47.114.110.211:8026";//天源
+    final static String TYDB = "ty";
+
+    //-----------------------------------------------
+    final static String CZAD = "47.114.110.211:8011";//春竹
+    final static String CZDB = "cz";
+
 
     public static String getDb(String address){
 
@@ -51,6 +76,24 @@ public class DbUtil {
             break;
         case XSAD:
             db = XSDB;
+            break;
+        case AJAD:
+            db = AJDB;
+            break;
+        case FYAD:
+            db = FYDB;
+            break;
+        case JMAD:
+            db = JMDB;
+            break;
+        case JYAD:
+            db = JYDB;
+            break;
+        case TYAD:
+            db = TYDB;
+            break;
+        case CZAD:
+            db = CZDB;
             break;
 
     }
