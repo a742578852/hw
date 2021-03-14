@@ -3,8 +3,10 @@ package com.information.five.service.impl;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.information.five.mapper.BaseBminfoMapper;
 import com.information.five.mapper.SystemAdminMapper;
+import com.information.five.mapper.SystemDictionaryMapper;
 import com.information.five.model.BaseBminfo;
 import com.information.five.model.SystemAdmin;
+import com.information.five.model.SystemDictionary;
 import com.information.five.service.UtilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class UtilServiceImpl implements UtilService {
     BaseBminfoMapper baseBminfoMapper;
     @Autowired
     SystemAdminMapper systemAdminMapper;
+    @Autowired
+    SystemDictionaryMapper systemDictionaryMapper;
     @Override
     @DS("#db")
     public List<BaseBminfo> getBminfo(String db) {
@@ -27,5 +31,14 @@ public class UtilServiceImpl implements UtilService {
     @DS("#db")
     public List<SystemAdmin> getAdmin(String db, String username) {
         return systemAdminMapper.queryAdminByParms(username);
+    }
+
+    @Override
+    @DS("#db")
+    public List<SystemDictionary> getDictionary(String db, String code) {
+
+
+
+        return systemDictionaryMapper.queryDictionaryByCode(code);
     }
 }

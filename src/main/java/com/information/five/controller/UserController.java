@@ -6,7 +6,9 @@ import com.information.five.service.SystemAdminService;
 import com.information.five.util.IpUtil;
 import com.information.five.util.Result;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,4 +53,16 @@ public class UserController {
 
         return new Result(200,true,"修改成功");
     }
+
+
+    @GetMapping("authorityCheck")
+    @ApiOperation("权限校验/首页入口显示")
+    public Result authorityCheck(HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+        Long id = Long.parseLong(request.getAttribute("id").toString());
+
+
+        return new Result(200,true,"获取成功",systemAdminService.authorityCheck(db,id));
+    }
+
 }

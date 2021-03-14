@@ -33,6 +33,8 @@ public class WorkorderServiceImpl implements WorkorderService {
 
     @Autowired
     ZyaqDlzinfoMapper zyaqDlzinfoMapper;
+    @Autowired
+    ZyaqAqcsszinfoMapper zyaqAqcsszinfoMapper;
 
     @Override
     @DS("#db")
@@ -401,5 +403,12 @@ public class WorkorderServiceImpl implements WorkorderService {
         }
 
         return 1;
+    }
+
+    @Override
+    @DS("#db")
+    public List<ZyaqAqcsszinfo> getZyaqAqcsszinfo(String db,String orderName) {
+
+        return zyaqAqcsszinfoMapper.queryAll(orderName);
     }
 }

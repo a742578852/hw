@@ -45,6 +45,9 @@ public class LoginIntercepter implements HandlerInterceptor {
                 String db = (String) claims.get("db");
 
 
+
+
+
 //                if (!(identification.equals(userLogin.getIdentification()))) {
 //                    map.put("code", 201);
 //                    map.put("message", "您的账号已在其他地方登录,您已被强制下线,请重新登录");

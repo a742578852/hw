@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @Api(tags = "作业票")
@@ -293,6 +294,16 @@ public class WorkorderController {
 
         return new Result(200,true,"操作成功",workorderService.changeBreakOrder(db,zyaqDlzinfo));
     }
+
+    @GetMapping("getSafetyMeasures")
+    @ApiOperation("获取安全措施")
+    public Result getSafetyMeasures(HttpServletRequest request,String orderName){
+        String db = (String) request.getAttribute("db");
+        List<ZyaqAqcsszinfo> aqcsszinfos = workorderService.getZyaqAqcsszinfo(db,orderName);
+
+        return new Result(200,true,"操作成功",aqcsszinfos);
+    }
+
 }
 
 

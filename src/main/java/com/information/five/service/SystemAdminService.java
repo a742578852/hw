@@ -2,6 +2,8 @@ package com.information.five.service;
 
 import com.information.five.model.SystemAdmin;
 
+import java.util.Map;
+
 public interface SystemAdminService {
 
     /**
@@ -33,5 +35,11 @@ public interface SystemAdminService {
      * @return
      */
     int updateSystem(SystemAdmin systemAdmin,String db);
+
+    /**
+     * 权限校验
+     * @return
+     */
+    Map authorityCheck(String db,Long id);
 
 }

@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,14 @@ public class UtilController {
         SystemAdmin systemAdmin = systemAdminService.getSystemAdminById(id, db);
 
         return new Result(200,true,"获取成功",utilService.getAdmin(db,userName));
+    }
+
+    @GetMapping("getDictionary")
+    @ApiOperation("根据code查询字典")
+    public Result getDictionary(String code,HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+
+        return new Result(200,true,"获取成功",utilService.getDictionary(db,code));
     }
 
 }

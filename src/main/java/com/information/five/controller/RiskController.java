@@ -156,7 +156,7 @@ public class RiskController {
             @ApiImplicitParam(name = "yhpcYhzgdinfo", value = "隐患整改单对象", dataType = "yhpcYhzgdinfo", required = true),
             @ApiImplicitParam(name = "file", value = "附件", dataType = "file", required = true)
     })
-    public Result fillDanger(YhpcYhzgdinfo yhpcYhzgdinfo, @ApiIgnore HttpServletRequest request) {
+    public Result fillDanger(@RequestBody YhpcYhzgdinfo yhpcYhzgdinfo, @ApiIgnore HttpServletRequest request) {
         String db = (String) request.getAttribute("db");
 
         //如果整改单号为空
@@ -168,7 +168,7 @@ public class RiskController {
             //获取最后一条数据
             String after = riskService.getLastYhzginfo(db).getZgdbh();
             String num[] = after.split("-");
-            int after1 = Integer.parseInt(num[2]);
+            int after1 = Integer.parseInt(num[2])+1;
             String newAfter;
             if (after1 >= 0 && after1 <= 9) {
                 newAfter = "000" + after1;

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.SystemDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.SystemDictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="dictCode" jdbcType="VARCHAR" property="dictcode" />
+    <result column="dictName" jdbcType="VARCHAR" property="dictname" />
+    <result column="dictDataName" jdbcType="VARCHAR" property="dictdataname" />
+    <result column="dictDataValue" jdbcType="VARCHAR" property="dictdatavalue" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="sortNumber" jdbcType="INTEGER" property="sortnumber" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, dictCode, dictName, dictDataName, dictDataValue, comments, sortNumber, created_at, 
+    updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryDictionaryByCode" resultType="com.information.five.model.SystemDictionary">
+    select <include refid="Base_Column_List"></include>
+    from system_dictionary
+    where pid = (select id from system_dictionary where dictCode = #{code})
+
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from system_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemDictionary" useGeneratedKeys="true">
+    insert into system_dictionary (pid, dictCode, dictName, 
+      dictDataName, dictDataValue, comments, 
+      sortNumber, created_at, updated_at
+      )
+    values (#{pid,jdbcType=INTEGER}, #{dictcode,jdbcType=VARCHAR}, #{dictname,jdbcType=VARCHAR}, 
+      #{dictdataname,jdbcType=VARCHAR}, #{dictdatavalue,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, 
+      #{sortnumber,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemDictionary" useGeneratedKeys="true">
+    insert into system_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="dictcode != null">
+        dictCode,
+      </if>
+      <if test="dictname != null">
+        dictName,
+      </if>
+      <if test="dictdataname != null">
+        dictDataName,
+      </if>
+      <if test="dictdatavalue != null">
+        dictDataValue,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="sortnumber != null">
+        sortNumber,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="dictcode != null">
+        #{dictcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null">
+        #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictdataname != null">
+        #{dictdataname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictdatavalue != null">
+        #{dictdatavalue,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null">
+        #{sortnumber,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.SystemDictionary">
+    update system_dictionary
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="dictcode != null">
+        dictCode = #{dictcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null">
+        dictName = #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictdataname != null">
+        dictDataName = #{dictdataname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictdatavalue != null">
+        dictDataValue = #{dictdatavalue,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null">
+        sortNumber = #{sortnumber,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.SystemDictionary">
+    update system_dictionary
+    set pid = #{pid,jdbcType=INTEGER},
+      dictCode = #{dictcode,jdbcType=VARCHAR},
+      dictName = #{dictname,jdbcType=VARCHAR},
+      dictDataName = #{dictdataname,jdbcType=VARCHAR},
+      dictDataValue = #{dictdatavalue,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      sortNumber = #{sortnumber,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

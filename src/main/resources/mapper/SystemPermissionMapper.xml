@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.SystemPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.SystemPermission">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="modelID" jdbcType="INTEGER" property="modelid" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+    <result column="authorityName" jdbcType="VARCHAR" property="authorityname" />
+    <result column="authority" jdbcType="VARCHAR" property="authority" />
+    <result column="routeName" jdbcType="VARCHAR" property="routename" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="authorityType" jdbcType="TINYINT" property="authoritytype" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="system" jdbcType="TINYINT" property="system" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="extended" jdbcType="INTEGER" property="extended" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, modelID, parentId, authorityName, authority, routeName, icon, authorityType, 
+    sort, `system`, `status`, extended, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_permission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from system_permission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemPermission" useGeneratedKeys="true">
+    insert into system_permission (modelID, parentId, authorityName, 
+      authority, routeName, icon, 
+      authorityType, sort, `system`, 
+      `status`, extended, created_at, 
+      updated_at)
+    values (#{modelid,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, #{authorityname,jdbcType=VARCHAR}, 
+      #{authority,jdbcType=VARCHAR}, #{routename,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{authoritytype,jdbcType=TINYINT}, #{sort,jdbcType=TINYINT}, #{system,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{extended,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.SystemPermission" useGeneratedKeys="true">
+    insert into system_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelid != null">
+        modelID,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+      <if test="authorityname != null">
+        authorityName,
+      </if>
+      <if test="authority != null">
+        authority,
+      </if>
+      <if test="routename != null">
+        routeName,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="authoritytype != null">
+        authorityType,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="system != null">
+        `system`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="extended != null">
+        extended,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelid != null">
+        #{modelid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="authorityname != null">
+        #{authorityname,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        #{authority,jdbcType=VARCHAR},
+      </if>
+      <if test="routename != null">
+        #{routename,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="authoritytype != null">
+        #{authoritytype,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="system != null">
+        #{system,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="extended != null">
+        #{extended,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.SystemPermission">
+    update system_permission
+    <set>
+      <if test="modelid != null">
+        modelID = #{modelid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="authorityname != null">
+        authorityName = #{authorityname,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        authority = #{authority,jdbcType=VARCHAR},
+      </if>
+      <if test="routename != null">
+        routeName = #{routename,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="authoritytype != null">
+        authorityType = #{authoritytype,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="system != null">
+        `system` = #{system,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="extended != null">
+        extended = #{extended,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.SystemPermission">
+    update system_permission
+    set modelID = #{modelid,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=INTEGER},
+      authorityName = #{authorityname,jdbcType=VARCHAR},
+      authority = #{authority,jdbcType=VARCHAR},
+      routeName = #{routename,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      authorityType = #{authoritytype,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=TINYINT},
+      `system` = #{system,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
+      extended = #{extended,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

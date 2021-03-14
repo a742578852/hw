@@ -203,4 +203,8 @@ public interface WorkorderService {
     int changeBreakOrder(String db,ZyaqDlzinfo zyaqDlzinfo);
 
 
+    //获取安全措施
+    List<ZyaqAqcsszinfo> getZyaqAqcsszinfo(String db,String orderName);
+
+
 }

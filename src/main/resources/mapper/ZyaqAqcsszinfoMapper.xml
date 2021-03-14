@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.ZyaqAqcsszinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.ZyaqAqcsszinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ZYZMC" jdbcType="VARCHAR" property="zyzmc" />
+    <result column="XH" jdbcType="INTEGER" property="xh" />
+    <result column="FXYS" jdbcType="VARCHAR" property="fxys" />
+    <result column="AQCS" jdbcType="VARCHAR" property="aqcs" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ZYZMC, XH, FXYS, AQCS, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zyaq_aqcsszinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryAll" resultType="com.information.five.model.ZyaqAqcsszinfo">
+     select <include refid="Base_Column_List"></include>
+     from zyaq_aqcsszinfo
+     where zyzmc = #{orderName}
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from zyaq_aqcsszinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.ZyaqAqcsszinfo" useGeneratedKeys="true">
+    insert into zyaq_aqcsszinfo (ZYZMC, XH, FXYS, 
+      AQCS, created_at, updated_at
+      )
+    values (#{zyzmc,jdbcType=VARCHAR}, #{xh,jdbcType=INTEGER}, #{fxys,jdbcType=VARCHAR}, 
+      #{aqcs,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.ZyaqAqcsszinfo" useGeneratedKeys="true">
+    insert into zyaq_aqcsszinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zyzmc != null">
+        ZYZMC,
+      </if>
+      <if test="xh != null">
+        XH,
+      </if>
+      <if test="fxys != null">
+        FXYS,
+      </if>
+      <if test="aqcs != null">
+        AQCS,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zyzmc != null">
+        #{zyzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xh != null">
+        #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="fxys != null">
+        #{fxys,jdbcType=VARCHAR},
+      </if>
+      <if test="aqcs != null">
+        #{aqcs,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.ZyaqAqcsszinfo">
+    update zyaq_aqcsszinfo
+    <set>
+      <if test="zyzmc != null">
+        ZYZMC = #{zyzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xh != null">
+        XH = #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="fxys != null">
+        FXYS = #{fxys,jdbcType=VARCHAR},
+      </if>
+      <if test="aqcs != null">
+        AQCS = #{aqcs,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.ZyaqAqcsszinfo">
+    update zyaq_aqcsszinfo
+    set ZYZMC = #{zyzmc,jdbcType=VARCHAR},
+      XH = #{xh,jdbcType=INTEGER},
+      FXYS = #{fxys,jdbcType=VARCHAR},
+      AQCS = #{aqcs,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

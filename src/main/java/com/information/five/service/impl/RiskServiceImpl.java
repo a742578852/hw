@@ -74,8 +74,10 @@ public class RiskServiceImpl implements RiskService {
     @DS("#db")
     public int addYhzgdinfo(String db, YhpcYhzgdinfo yhpcYhzgdinfo) {
         if (yhpcYhzgdinfo.getId() == null || yhpcYhzgdinfo.getId() == 0){
+            yhpcYhzgdinfo.setCreatedAt(new Date());
             yhpcYhzgdinfoMapper.insertSelective(yhpcYhzgdinfo);
         }else {
+            yhpcYhzgdinfo.setUpdatedAt(new Date());
             yhpcYhzgdinfoMapper.updateByPrimaryKeySelective(yhpcYhzgdinfo);
         }
 

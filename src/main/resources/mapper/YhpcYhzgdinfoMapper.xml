@@ -217,9 +217,9 @@
       <if test="tjshr != null">
         TJSHR,
       </if>
-      <if test="shr != null">
-        SHR,
-      </if>
+<!--      <if test="shr != null">-->
+<!--        SHR,-->
+<!--      </if>-->
       <if test="ldshyj != null">
         LDSHYJ,
       </if>
@@ -342,9 +342,9 @@
       <if test="tjshr != null">
         #{tjshr,jdbcType=VARCHAR},
       </if>
-      <if test="shr != null">
-        #{shr,jdbcType=VARCHAR},
-      </if>
+<!--      <if test="shr != null">-->
+<!--        #{shr,jdbcType=VARCHAR},-->
+<!--      </if>-->
       <if test="ldshyj != null">
         #{ldshyj,jdbcType=VARCHAR},
       </if>

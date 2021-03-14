@@ -196,6 +196,7 @@ public class YhpcYhzgdinfo implements Serializable {
 
     private Date updatedAt;
 
+
     public Long getId() {
         return id;
     }
