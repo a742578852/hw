@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.information.five.mapper.EduPxzlinfoMapper">
+  <resultMap id="BaseResultMap" type="com.information.five.model.EduPxzlinfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="SCSJ" jdbcType="VARCHAR" property="scsj" />
+    <result column="SCBM" jdbcType="VARCHAR" property="scbm" />
+    <result column="BT" jdbcType="VARCHAR" property="bt" />
+    <result column="SSLX" jdbcType="VARCHAR" property="sslx" />
+    <result column="GJZ" jdbcType="VARCHAR" property="gjz" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="FJ" jdbcType="VARCHAR" property="fj" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, SCSJ, SCBM, BT, SSLX, GJZ, BZ, FJ, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from edu_pxzlinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="queryAll" resultType="com.information.five.model.EduPxzlinfo">
+      select * from edu_pxzlinfo;
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from edu_pxzlinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.EduPxzlinfo" useGeneratedKeys="true">
+    insert into edu_pxzlinfo (SCSJ, SCBM, BT, 
+      SSLX, GJZ, BZ, FJ, 
+      created_at, updated_at)
+    values (#{scsj,jdbcType=VARCHAR}, #{scbm,jdbcType=VARCHAR}, #{bt,jdbcType=VARCHAR}, 
+      #{sslx,jdbcType=VARCHAR}, #{gjz,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{fj,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.information.five.model.EduPxzlinfo" useGeneratedKeys="true">
+    insert into edu_pxzlinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scsj != null">
+        SCSJ,
+      </if>
+      <if test="scbm != null">
+        SCBM,
+      </if>
+      <if test="bt != null">
+        BT,
+      </if>
+      <if test="sslx != null">
+        SSLX,
+      </if>
+      <if test="gjz != null">
+        GJZ,
+      </if>
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="fj != null">
+        FJ,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scsj != null">
+        #{scsj,jdbcType=VARCHAR},
+      </if>
+      <if test="scbm != null">
+        #{scbm,jdbcType=VARCHAR},
+      </if>
+      <if test="bt != null">
+        #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="sslx != null">
+        #{sslx,jdbcType=VARCHAR},
+      </if>
+      <if test="gjz != null">
+        #{gjz,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="fj != null">
+        #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.information.five.model.EduPxzlinfo">
+    update edu_pxzlinfo
+    <set>
+      <if test="scsj != null">
+        SCSJ = #{scsj,jdbcType=VARCHAR},
+      </if>
+      <if test="scbm != null">
+        SCBM = #{scbm,jdbcType=VARCHAR},
+      </if>
+      <if test="bt != null">
+        BT = #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="sslx != null">
+        SSLX = #{sslx,jdbcType=VARCHAR},
+      </if>
+      <if test="gjz != null">
+        GJZ = #{gjz,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null">
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="fj != null">
+        FJ = #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.information.five.model.EduPxzlinfo">
+    update edu_pxzlinfo
+    set SCSJ = #{scsj,jdbcType=VARCHAR},
+      SCBM = #{scbm,jdbcType=VARCHAR},
+      BT = #{bt,jdbcType=VARCHAR},
+      SSLX = #{sslx,jdbcType=VARCHAR},
+      GJZ = #{gjz,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      FJ = #{fj,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

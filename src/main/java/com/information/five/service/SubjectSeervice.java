@@ -1,9 +1,6 @@
 package com.information.five.service;
 
-import com.information.five.model.Question;
-import com.information.five.model.Score;
-import com.information.five.model.Subject;
-import com.information.five.model.SystemAdmin;
+import com.information.five.model.*;
 
 import java.util.List;
 import java.util.Map;
@@ -76,5 +73,12 @@ public interface SubjectSeervice {
      * @return
      */
     int markingExam(String db,String answer,Long scoreId);
+
+    /**
+     * 查询所有培训资料
+     * @param db
+     * @return
+     */
+    List<EduPxzlinfo> getTrainingMaterials(String db);
 
 }

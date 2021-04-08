@@ -25,6 +25,8 @@ public class SubjectServiceImpl implements SubjectSeervice {
     ScoreMapper scoreMapper;
     @Autowired
     SchemesMapper schemesMapper;
+    @Autowired
+    EduPxzlinfoMapper eduPxzlinfoMapper;
 
     @Override
     @DS("#tb")
@@ -188,5 +190,11 @@ public class SubjectServiceImpl implements SubjectSeervice {
         inScore.setAnswer(answer);
 
         return scoreMapper.updateByPrimaryKeySelective(inScore);
+    }
+
+    @Override
+    @DS("#db")
+    public List<EduPxzlinfo> getTrainingMaterials(String db) {
+        return eduPxzlinfoMapper.queryAll();
     }
 }

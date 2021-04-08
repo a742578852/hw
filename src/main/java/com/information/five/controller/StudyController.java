@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -153,5 +154,10 @@ public class StudyController {
 
     }
 
-
+    @GetMapping("getTrainingMaterials")
+    @ApiOperation("查询所有培训资料")
+    public Result getTrainingMaterials(HttpServletRequest request){
+        String db = (String) request.getAttribute("db");
+        return new Result(200,true,"获取成功",subjectSeervice.getTrainingMaterials(db));
+    }
 }
