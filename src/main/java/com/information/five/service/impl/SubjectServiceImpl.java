@@ -113,7 +113,8 @@ public class SubjectServiceImpl implements SubjectSeervice {
         //获取试卷信息
         Score score = scoreMapper.selectByPrimaryKey(scoreId);
         //获取试题
-        String questions = score.getRandst().replace("|5||", ",").replace("|5", ",");
+        String questions = score.getRandst().replace("|5||", ",").
+                replace("|5", ",").replace("|10||",",").replace("|10",",");
         //转数组
         String[] scoreQuestion = questions.split(",");
         //查询出所有题目

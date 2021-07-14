@@ -1,6 +1,6 @@
 package com.information.five.util;
 
-import com.information.five.model.SystemAdmin;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

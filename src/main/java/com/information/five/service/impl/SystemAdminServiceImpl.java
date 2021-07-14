@@ -103,10 +103,11 @@ public class SystemAdminServiceImpl implements SystemAdminService {
                         examinationFlg = 1;
                     }else if(perId == 136){
                         riskFlg = 1;
-                        dangerFlg = 1;
+
+                        judgeFlg = 1;
                     }else if(perId == 203){
                         inspectFlg = 1;
-                        judgeFlg = 1;
+                        dangerFlg = 1;
                     }else if(perId == 192){
                         orderFlg = 1;
                     }
